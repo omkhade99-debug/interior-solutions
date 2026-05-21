@@ -194,18 +194,21 @@ export function Hero() {
                   100%
                 </h4>
 
-                <p className="text-xs uppercase tracking-[0.15em] text-gray-400">
+                <p className="text-xs uppercase tracking-[0.15em] text-gray-400 mb-6">
                   Client Satisfaction
                 </p>
               </div>
-              {/* Bottom */}
-            <div className="absolute bottom-10 left-0 right-0 text-center">
-
-              <p className="uppercase tracking-[0.2em] text-xs text-gray-500">
-                Nagpur · Chandrapur · Maharashtra
-              </p>
 
             </div>
+
+            {/* Bottom */}
+<div className="absolute bottom-6 left-0 right-0 text-center">
+
+  <p className="uppercase tracking-[0.2em] text-xs text-gray-500 mt-6">
+    Nagpur · Chandrapur · Maharashtra
+  </p>
+
+</div>
 
           </div>
 
