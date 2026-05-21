@@ -1,6 +1,17 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-type ProjectCategory = 'all' | 'residential' | 'commercial' | 'renovation';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+type ProjectCategory =
+  | "all"
+  | "residential"
+  | "commercial"
+  | "renovation";
 
 interface Project {
   id: number;
@@ -8,67 +19,116 @@ interface Project {
   categoryLabel: string;
   name: string;
   featured?: boolean;
+  images: string[];
 }
 
 const projects: Project[] = [
   {
     id: 1,
-    category: 'residential',
-    categoryLabel: 'Residential · Living Room',
-    name: 'Modern Luxury Apartment — Nagpur',
+    category: "residential",
+    categoryLabel: "Residential · Living Room",
+    name: "Modern Luxury Apartment — Nagpur",
     featured: true,
+
+    images: [
+      "/portfolio/living room/living room.jpeg",
+      "/portfolio/living room/living room2.jpeg",
+      "/portfolio/living room/living room 3.jpeg",
+    ],
   },
+
   {
     id: 2,
-    category: 'commercial',
-    categoryLabel: 'Commercial · Office',
-    name: 'Corporate Suite — Chandrapur',
+    category: "commercial",
+    categoryLabel: "Commercial · Office",
+    name: "Corporate Suite — Chandrapur",
+
+    images: [
+      "/portfolio/office/office.jpeg",
+      "/portfolio/office/office2.jpeg",
+      "/portfolio/office/office 3.jpeg",
+         ],
   },
+
   {
     id: 3,
-    category: 'residential',
-    categoryLabel: 'Residential · Bedroom',
-    name: 'Contemporary Master Suite',
+    category: "residential",
+    categoryLabel: "Residential · Bedroom",
+    name: "Contemporary Master Suite",
+
+    images: [
+      "/portfolio/bedroom/bedroom.jpeg",
+      "/portfolio/bedroom/bedroom2.jpeg",
+      "/portfolio/bedroom/bedroom3.jpeg",
+      "/portfolio/bedroom/bedroom4.jpeg",
+      "/portfolio/bedroom/bedroom5.jpeg",
+    ],
   },
+
   {
     id: 4,
-    category: 'renovation',
-    categoryLabel: 'Renovation · Kitchen',
-    name: 'Heritage Home Revived',
+    category: "renovation",
+    categoryLabel: "Renovation · Kitchen",
+    name: "Modern Kitchen Design",
+
+    images: [
+      "/portfolio/kitchen/kitchen.jpeg",
+      "/portfolio/kitchen/kitchen2.jpeg",
+    ],
   },
+
   {
     id: 5,
-    category: 'commercial',
-    categoryLabel: 'Commercial · Showroom',
-    name: 'Retail Experience Design',
+    category: "commercial",
+    categoryLabel: "Commercial · Showroom",
+    name: "Retail Experience Design",
+
+    images: [
+      "/portfolio/office/office.jpeg",
+      "/portfolio/office/office2.jpeg",
+      "/portfolio/office/office 3.jpeg",
+    ],
   },
 ];
 
-const filters: { value: ProjectCategory; label: string }[] = [
-  { value: 'all', label: 'All' },
-  { value: 'residential', label: 'Residential' },
-  { value: 'commercial', label: 'Commercial' },
-  { value: 'renovation', label: 'Renovation' },
+const filters: {
+  value: ProjectCategory;
+  label: string;
+}[] = [
+  { value: "all", label: "All" },
+  { value: "residential", label: "Residential" },
+  { value: "commercial", label: "Commercial" },
+  { value: "renovation", label: "Renovation" },
 ];
 
 export function Portfolio() {
-  const [activeFilter, setActiveFilter] = useState<ProjectCategory>('all');
+  const [activeFilter, setActiveFilter] =
+    useState<ProjectCategory>("all");
 
   const filteredProjects =
-    activeFilter === 'all'
+    activeFilter === "all"
       ? projects
-      : projects.filter((p) => p.category === activeFilter);
+      : projects.filter(
+          (p) => p.category === activeFilter
+        );
 
   return (
-    <section id="work" className="bg-[var(--dark)] px-[4%] py-24">
+    <section
+      id="work"
+      className="bg-[var(--dark)] px-[4%] py-24"
+    >
       {/* Header */}
       <div className="flex justify-between items-end mb-12 flex-wrap gap-4">
         <div>
-          <p className="flex items-center gap-4 text-[0.72rem] tracking-[0.25em] uppercase text-[var(--gold)] mb-4 after:content-[''] after:flex-1 after:h-[1px] after:bg-[var(--border-gold)] after:max-w-[80px]">
+          <p className="flex items-center gap-4 text-[0.72rem] tracking-[0.25em] uppercase text-[var(--gold)] mb-4">
             Portfolio
           </p>
-          <h2>
-            Our <em className="italic text-[var(--gold)]">Work</em>
+
+          <h2 className="text-5xl text-white">
+            Our{" "}
+            <em className="italic text-[var(--gold)]">
+              Work
+            </em>
           </h2>
         </div>
 
@@ -77,11 +137,13 @@ export function Portfolio() {
           {filters.map((filter) => (
             <button
               key={filter.value}
-              onClick={() => setActiveFilter(filter.value)}
-              className={`px-5 py-2 border text-[0.75rem] tracking-[0.1em] uppercase cursor-pointer transition-all duration-200 ${
+              onClick={() =>
+                setActiveFilter(filter.value)
+              }
+              className={`px-5 py-2 border text-[0.75rem] tracking-[0.1em] uppercase transition-all duration-200 ${
                 activeFilter === filter.value
-                  ? 'border-[var(--gold)] text-[var(--gold)]'
-                  : 'border-[var(--border-gold)] text-[var(--text-muted)] hover:border-[var(--gold)] hover:text-[var(--gold)]'
+                  ? "border-[var(--gold)] text-[var(--gold)]"
+                  : "border-gray-700 text-gray-400 hover:border-[var(--gold)] hover:text-[var(--gold)]"
               }`}
             >
               {filter.label}
@@ -95,44 +157,51 @@ export function Portfolio() {
         {filteredProjects.map((project) => (
           <div
             key={project.id}
-            className={`relative overflow-hidden bg-[var(--dark2)] border border-[var(--border-gold)] cursor-pointer transition-colors duration-300 hover:border-[var(--gold)] ${
-              project.featured ? 'md:col-span-2' : ''
+            className={`overflow-hidden border border-gray-700 bg-black transition-all duration-300 hover:border-[var(--gold)] ${
+              project.featured
+                ? "md:col-span-2"
+                : ""
             }`}
           >
-            {/* Project Image Placeholder */}
-            <div
-              className={`w-full relative overflow-hidden flex items-center justify-center ${
-                project.featured ? 'aspect-video' : 'aspect-[4/3]'
-              }`}
-              style={{
-                background:
-                  'linear-gradient(135deg, var(--dark2) 0%, var(--dark3) 100%)',
-              }}
+            {/* Image Slider */}
+            <Swiper
+              modules={[
+                Navigation,
+                Pagination,
+                Autoplay,
+              ]}
+              navigation
+              pagination={{ clickable: true }}
+              autoplay={{ delay: 2500 }}
+              loop={true}
+              className={
+                project.featured
+                  ? "aspect-video"
+                  : "aspect-[4/3]"
+              }
             >
-              <div className="absolute inset-4 border border-dashed border-[var(--border-gold)]" />
-              <div className="relative z-10">
-                {/* Placeholder X */}
-                <div className="relative w-12 h-12 opacity-30">
-                  <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-[var(--gold)] rotate-45" />
-                  <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-[var(--gold)] -rotate-45" />
-                </div>
-              </div>
-              <span className="absolute bottom-4 text-[0.75rem] tracking-[0.15em] uppercase text-[rgba(200,24,90,0.5)]">
-                Add project photo
-              </span>
-            </div>
+              {project.images.map(
+                (image, index) => (
+                  <SwiperSlide key={index}>
+                    <img
+                      src={image}
+                      alt={project.name}
+                      className="w-full h-full object-cover hover:scale-105 transition duration-700"
+                    />
+                  </SwiperSlide>
+                )
+              )}
+            </Swiper>
 
             {/* Project Info */}
             <div className="p-6">
-              <p className="text-[0.68rem] tracking-[0.18em] uppercase text-[var(--gold)] mb-2">
+              <p className="text-sm uppercase text-[var(--gold)] mb-2">
                 {project.categoryLabel}
               </p>
-              <p
-                className="text-[1.15rem] font-normal text-[var(--text)]"
-                style={{ fontFamily: 'var(--font-serif)' }}
-              >
+
+              <h3 className="text-xl text-white">
                 {project.name}
-              </p>
+              </h3>
             </div>
           </div>
         ))}

@@ -1,61 +1,166 @@
-import { ExternalLink } from 'lucide-react';
+import { motion } from "framer-motion";
+
+const videos = [
+  {
+    title: "Luxury Living Room",
+    category: "Residential Interior",
+
+    thumbnail:
+      "/portfolio/living room/living room.jpeg",
+
+    url: "https://youtu.be/mTySigM71nA",
+  },
+
+  {
+    title: "Modern Bedroom Design",
+    category: "Bedroom Interior",
+
+    thumbnail:
+      "/portfolio/bedroom/bedroom.jpeg",
+
+    url: "https://youtu.be/W9vWQoinYOs",
+  },
+
+  {
+    title: "Premium Office Space",
+    category: "Commercial Interior",
+
+    thumbnail:
+      "/portfolio/office/office.jpeg",
+
+    url: "https://youtu.be/G0-SRCXhkZA",
+  },
+
+  {
+    title: "Luxury Interior Walkthrough",
+    category: "Interior Showcase",
+
+    thumbnail:
+      "/portfolio/living room/living room2.jpeg",
+
+    url: "https://youtu.be/1Jo8azRFK50",
+  },
+];
 
 export function Videos() {
   return (
-    <section id="videos" className="bg-[var(--dark2)] px-[4%] py-24">
-      <div>
-        <p className="flex items-center gap-4 text-[0.72rem] tracking-[0.25em] uppercase text-[var(--gold)] mb-4 after:content-[''] after:flex-1 after:h-[1px] after:bg-[var(--border-gold)] after:max-w-[80px]">
-          YouTube
-        </p>
-        <h2>
-          Watch Us <em className="italic text-[var(--gold)]">Create</em>
-        </h2>
-        <p className="text-[var(--text-muted)] text-[0.95rem] mt-2 max-w-[500px]">
-          Follow our journey through every project — design reveals, walkthroughs,
-          and tips from the studio.
-        </p>
-      </div>
+    <section
+      id="videos"
+      className="bg-[var(--dark2)] text-white py-24 px-[6%] overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto">
 
-      {/* Videos Grid */}
-      <div className="grid md:grid-cols-2 gap-8 mt-12">
-        {/* Video Embed */}
-        <div className="relative pb-[56.25%] bg-[var(--dark3)] border border-[var(--border-gold)] overflow-hidden">
-          <iframe
-            className="absolute inset-0 w-full h-full"
-            src="https://www.youtube.com/embed/1Jo8azRFK50?si=mYueNdMLBjnfgWuB"
-            frameBorder="0"
-            allowFullScreen
-            loading="lazy"
-            title="Interior Solution's YouTube Channel"
-          />
-        </div>
+        {/* Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 80 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="mb-20 text-center"
+        >
+          <p className="uppercase tracking-[0.3em] text-[var(--gold)] text-sm mb-4">
+            Videos
+          </p>
 
-        {/* Content */}
-        <div className="flex flex-col gap-6">
-          <div className="bg-[var(--dark3)] border border-[var(--border-gold)] p-8">
-            <p
-              className="text-[1.3rem] italic text-[var(--text)] leading-relaxed mb-4"
-              style={{ fontFamily: 'var(--font-serif)' }}
-            >
-              "A well-designed space has the power to transform lives."
-            </p>
-            <p className="text-[0.82rem] text-[var(--text-muted)] leading-relaxed">
-              Subscribe to our channel for behind-the-scenes content, full project
-              walkthroughs, and interior design inspiration straight from our
-              studios in Nagpur and Chandrapur.
-            </p>
-          </div>
-
-          <a
-            href="https://www.youtube.com/@mahendrakhade9127"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-3 text-[var(--gold)] no-underline text-[0.82rem] tracking-[0.1em] uppercase px-8 py-4 border border-[var(--gold)] transition-all duration-200 hover:bg-[var(--gold)] hover:text-[var(--dark)]"
+          <h2
+            className="text-5xl md:text-6xl font-light leading-tight"
+            style={{ fontFamily: "var(--font-serif)" }}
           >
-            <ExternalLink size={16} />
-            Visit Our YouTube Channel
-          </a>
+            Design
+            <span className="italic text-[var(--gold)]">
+              {" "}
+              Stories
+            </span>
+            <br />
+            In Motion
+          </h2>
+        </motion.div>
+
+        {/* Videos Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+          {videos.map((video, index) => (
+            <motion.a
+              key={index}
+              href={video.url}
+              target="_blank"
+              rel="noopener noreferrer"
+
+              initial={{ opacity: 0, y: 80 }}
+              whileInView={{ opacity: 1, y: 0 }}
+
+              transition={{
+                duration: 0.8,
+                delay: index * 0.15,
+              }}
+
+              viewport={{ once: true }}
+
+              whileHover={{
+                y: -10,
+                scale: 1.02,
+              }}
+
+              whileTap={{
+                scale: 0.98,
+              }}
+
+              className="group overflow-hidden bg-black border border-gray-800 hover:border-[var(--gold)] transition-all duration-300"
+            >
+
+              {/* Thumbnail */}
+              <div className="relative overflow-hidden aspect-video">
+
+                <img
+                  src={video.thumbnail}
+                  alt={video.title}
+                  className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
+                />
+
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-black/30" />
+
+                {/* Play Button */}
+                <div className="absolute inset-0 flex items-center justify-center">
+
+                  <motion.div
+                    whileHover={{
+                      scale: 1.15,
+                    }}
+                    className="w-20 h-20 rounded-full border border-white/50 backdrop-blur-md flex items-center justify-center"
+                  >
+
+                    <div className="ml-1 w-0 h-0 border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent border-l-[18px] border-l-white" />
+
+                  </motion.div>
+
+                </div>
+
+              </div>
+
+              {/* Content */}
+              <div className="p-6">
+
+                <p className="uppercase tracking-[0.2em] text-[var(--gold)] text-xs mb-3">
+                  {video.category}
+                </p>
+
+                <h3
+                  className="text-2xl"
+                  style={{
+                    fontFamily: "var(--font-serif)",
+                  }}
+                >
+                  {video.title}
+                </h3>
+
+              </div>
+
+            </motion.a>
+          ))}
+
         </div>
+
       </div>
     </section>
   );
