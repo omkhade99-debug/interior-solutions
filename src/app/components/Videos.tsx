@@ -6,7 +6,7 @@ const videos = [
     category: "Residential Interior",
 
     thumbnail:
-      "/portfolio/living room/living room.jpeg",
+      "/portfolio/living-room/living-room.jpeg",
 
     url: "https://youtu.be/mTySigM71nA",
   },
@@ -36,7 +36,7 @@ const videos = [
     category: "Interior Showcase",
 
     thumbnail:
-      "/portfolio/living room/living room2.jpeg",
+      "/portfolio/living-room/living-room2.jpeg",
 
     url: "https://youtu.be/1Jo8azRFK50",
   },
@@ -105,7 +105,7 @@ export function Videos() {
                 scale: 0.98,
               }}
 
-              className="group overflow-hidden bg-black border border-gray-800 hover:border-[var(--gold)] transition-all duration-300"
+              className="group overflow-hidden bg-black border border-gray-800 hover:border-[var(--gold)] transition-all duration-300 rounded-2xl"
             >
 
               {/* Thumbnail */}
@@ -146,7 +146,7 @@ export function Videos() {
                 </p>
 
                 <h3
-                  className="text-2xl"
+                  className="text-2xl leading-snug"
                   style={{
                     fontFamily: "var(--font-serif)",
                   }}
