@@ -4,60 +4,170 @@ export function Videos() {
   return (
     <section
       id="videos"
-      className="bg-[var(--dark2)] text-white py-28 px-[6%] overflow-hidden"
+      className="py-28 px-[6%] overflow-hidden"
     >
-
       <div className="max-w-7xl mx-auto">
 
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 80 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 1.2 }}
           viewport={{ once: true }}
-          className="mb-20"
+          className="text-center mb-24"
         >
 
-          <div className="flex items-center gap-6 mb-8">
-
-            <p className="uppercase tracking-[0.35em] text-[var(--gold)] text-sm">
-              Youtube
-            </p>
-
-            <div className="w-20 h-px bg-[var(--gold)] opacity-40" />
-
-          </div>
+          <p className="uppercase tracking-[0.35em] text-[var(--gold)] text-sm mb-6">
+            Videos
+          </p>
 
           <h2
-            className="text-5xl md:text-7xl leading-[0.95] font-light mb-8"
+            className="text-6xl md:text-7xl leading-[0.95] font-light"
             style={{
               fontFamily: "var(--font-serif)",
             }}
           >
-            Watch Us
+            Design
             <span className="italic text-[var(--gold)]">
               {" "}
-              Create
+              Stories
             </span>
+            <br />
+            In Motion
           </h2>
-
-          <p className="text-lg text-gray-400 leading-relaxed max-w-2xl">
-            Follow our journey through every project —
-            design reveals, walkthroughs, and tips from the studio.
-          </p>
 
         </motion.div>
 
-        {/* Main Layout */}
-        <div className="grid lg:grid-cols-2 gap-10 items-start">
+        {/* Videos Grid */}
+        <div className="grid lg:grid-cols-2 gap-10">
 
-          {/* Left Video */}
+          {/* Video 1 */}
           <motion.div
-            initial={{ opacity: 0, x: -80 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
             viewport={{ once: true }}
-            className="overflow-hidden border border-[rgba(200,24,90,0.25)]"
+            className="glass hover-lift premium-glow rounded-[30px] overflow-hidden"
+          >
+
+            <div className="aspect-video">
+
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/mTySigM71nA?si=Obz2jhBGiH_BRyww"
+                title="Luxury Living Room"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+
+            </div>
+
+            <div className="p-8">
+
+              <p className="uppercase tracking-[0.2em] text-[var(--gold)] text-xs mb-4">
+                Residential Interior
+              </p>
+
+              <h3
+                className="text-3xl"
+                style={{
+                  fontFamily: "var(--font-serif)",
+                }}
+              >
+                Luxury Living Room
+              </h3>
+
+            </div>
+
+          </motion.div>
+
+          {/* Video 2 */}
+          <motion.div
+            initial={{ opacity: 0, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="glass hover-lift premium-glow rounded-[30px] overflow-hidden"
+          >
+
+            <div className="aspect-video">
+
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/oRBrZfuo2JI?si=_hdw0EDVBLyzmSjF"
+                title="Modern Bedroom Design"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+
+            </div>
+
+            <div className="p-8">
+
+              <p className="uppercase tracking-[0.2em] text-[var(--gold)] text-xs mb-4">
+                Bedroom Interior
+              </p>
+
+              <h3
+                className="text-3xl"
+                style={{
+                  fontFamily: "var(--font-serif)",
+                }}
+              >
+                Modern Bedroom Design
+              </h3>
+
+            </div>
+
+          </motion.div>
+
+          {/* Video 3 */}
+          <motion.div
+            initial={{ opacity: 0, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="glass hover-lift premium-glow rounded-[30px] overflow-hidden"
+          >
+
+            <div className="aspect-video">
+
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/1Jo8azRFK50?si=P6eUZXj7229onxMI"
+                title="Premium Office Space"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+
+            </div>
+
+            <div className="p-8">
+
+              <p className="uppercase tracking-[0.2em] text-[var(--gold)] text-xs mb-4">
+                Commercial Interior
+              </p>
+
+              <h3
+                className="text-3xl"
+                style={{
+                  fontFamily: "var(--font-serif)",
+                }}
+              >
+                Premium Office Space
+              </h3>
+
+            </div>
+
+          </motion.div>
+
+          {/* Video 4 */}
+          <motion.div
+            initial={{ opacity: 0, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="glass hover-lift premium-glow rounded-[30px] overflow-hidden"
           >
 
             <div className="aspect-video">
@@ -65,66 +175,59 @@ export function Videos() {
               <iframe
                 className="w-full h-full"
                 src="https://www.youtube.com/embed/1Jo8azRFK50?si=pEq2GEVDLeaiOAYS"
-                title="Interior Solutions Video"
+                title="Luxury Interior Walkthrough"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
 
             </div>
 
-          </motion.div>
+            <div className="p-8">
 
-          {/* Right Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 80 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
+              <p className="uppercase tracking-[0.2em] text-[var(--gold)] text-xs mb-4">
+                Interior Showcase
+              </p>
 
-            {/* Quote Card */}
-            <div className="border border-[rgba(200,24,90,0.25)] p-10 bg-white/5 backdrop-blur-xl">
-
-              <p
-                className="text-3xl italic leading-relaxed text-gray-200"
+              <h3
+                className="text-3xl"
                 style={{
                   fontFamily: "var(--font-serif)",
                 }}
               >
-                "A well-designed space has the power
-                to transform lives."
-              </p>
-
-              <p className="mt-8 text-gray-400 leading-relaxed">
-                Subscribe to our channel for behind-the-scenes
-                content, full project walkthroughs, and interior
-                design inspiration straight from our studios in
-                Nagpur and Chandrapur.
-              </p>
+                Luxury Interior Walkthrough
+              </h3>
 
             </div>
-
-            {/* Youtube Button */}
-            <a
-              href="https://www.youtube.com/@mahendrakhade9127"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 border border-[var(--gold)] px-10 py-5 uppercase tracking-[0.2em] text-sm text-[var(--gold)] hover:bg-[var(--gold)] hover:text-black transition duration-300 w-full"
-            >
-
-              <span className="text-xl">↗</span>
-
-              Visit Our Youtube Channel
-
-            </a>
 
           </motion.div>
 
         </div>
 
-      </div>
+        {/* Bottom Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="flex justify-center mt-20"
+        >
 
+          <a
+            href="https://www.youtube.com/@mahendrakhade9127"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-3 border border-[var(--gold)] px-12 py-5 uppercase tracking-[0.2em] text-sm text-[var(--gold)] hover:bg-[var(--gold)] hover:text-black transition duration-500 rounded-full"
+          >
+
+            <span className="text-xl">↗</span>
+
+            Visit Our Youtube Channel
+
+          </a>
+
+        </motion.div>
+
+      </div>
     </section>
   );
 }

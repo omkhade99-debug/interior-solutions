@@ -1,8 +1,11 @@
-import logo from "/logo.png";
-export function LogoMark({ className = "w-28 h-16" }: { className?: string }) {
+export function LogoMark({
+  className = "w-28 h-16",
+}: {
+  className?: string;
+}) {
   return (
     <img
-      src={logo}
+      src="/logo.png"
       alt="Interior Solution Logo"
       className={className}
     />

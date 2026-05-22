@@ -122,7 +122,10 @@ export function Hero() {
               <img
                 src="/logo.png"
                 alt="Interior Solutions Logo"
-                className="w-40 object-contain"
+                className="w-44 object-contain"
+                style={{
+                  imageRendering: "crisp-edges",
+                }}
               />
 
             </div>
@@ -164,10 +167,12 @@ export function Hero() {
                 Founder & Interior Designer
               </p>
 
+              <div className="mt-8" />
+
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 gap-8 mt-14">
+            <div className="grid grid-cols-2 gap-12 mt-16">
 
               <div className="text-center">
                 <h4 className="text-4xl text-[var(--gold)] mb-2">
@@ -202,13 +207,13 @@ export function Hero() {
             </div>
 
             {/* Bottom */}
-<div className="absolute bottom-6 left-0 right-0 text-center">
+            <div className="absolute bottom-6 left-0 right-0 text-center">
 
-  <p className="uppercase tracking-[0.2em] text-xs text-gray-500 mt-6">
-    Nagpur · Chandrapur · Maharashtra
-  </p>
+              <p className="uppercase tracking-[0.2em] text-xs text-gray-500 mt-6">
+                Nagpur · Chandrapur · Maharashtra
+              </p>
 
-</div>
+            </div>
 
           </div>
 
