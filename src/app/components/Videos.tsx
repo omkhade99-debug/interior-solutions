@@ -95,7 +95,7 @@ export function Videos() {
               <iframe
                 className="w-full h-full"
                 src="https://www.youtube.com/embed/oRBrZfuo2JI?si=_hdw0EDVBLyzmSjF"
-                title="Modern Bedroom Design"
+                title="Beyond Clinical Design"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
@@ -114,7 +114,7 @@ export function Videos() {
                   fontFamily: "var(--font-serif)",
                 }}
               >
-                Modern Bedroom Design
+                Beyond Clinical Design
               </h3>
 
             </div>
@@ -174,7 +174,7 @@ export function Videos() {
 
               <iframe
                 className="w-full h-full"
-                src="https://www.youtube.com/embed/1Jo8azRFK50?si=pEq2GEVDLeaiOAYS"
+                src="https://www.youtube.com/embed/VXzRQTUEI8I?si=Om336Uh1L4hxsNJ2" 
                 title="Luxury Interior Walkthrough"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen

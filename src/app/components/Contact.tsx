@@ -4,27 +4,36 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="bg-black text-white py-24 px-[6%] overflow-hidden"
+      className="bg-black py-28 px-[6%] overflow-hidden relative"
     >
-      <div className="max-w-7xl mx-auto">
+
+      {/* Background Glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,20,90,0.08),transparent_35%)]" />
+
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(212,20,90,0.06),transparent_35%)]" />
+
+      <div className="relative z-10 max-w-7xl mx-auto">
 
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 80 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 1.2 }}
           viewport={{ once: true }}
-          className="mb-20 text-center"
+          className="text-center mb-24"
         >
-          <p className="uppercase tracking-[0.3em] text-[var(--gold)] text-sm mb-4">
-            Contact Us
+
+          <p className="uppercase tracking-[0.35em] text-[var(--gold)] text-sm mb-6">
+            Contact
           </p>
 
           <h2
-            className="text-5xl md:text-6xl font-light leading-tight"
-            style={{ fontFamily: "var(--font-serif)" }}
+            className="text-6xl md:text-7xl leading-[0.95] font-light text-white"
+            style={{
+              fontFamily: "var(--font-serif)",
+            }}
           >
-            Let’s Create
+            Let's Build
             <span className="italic text-[var(--gold)]">
               {" "}
               Something
@@ -32,119 +41,286 @@ export function Contact() {
             <br />
             Extraordinary
           </h2>
+
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        {/* Main Layout */}
+        <div className="grid lg:grid-cols-2 gap-14 items-start">
 
-          {/* Left Info */}
+          {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -80 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 1.2 }}
             viewport={{ once: true }}
+            className="
+              bg-[#0b0b0b]
+              border
+              border-[rgba(212,20,90,0.18)]
+              rounded-[36px]
+              p-12
+              premium-glow
+            "
           >
-            <p className="text-gray-400 text-lg leading-relaxed mb-10">
-              We design elegant residential and
-              commercial interiors tailored to your
-              lifestyle, vision, and aspirations.
+
+            <p className="uppercase tracking-[0.2em] text-[var(--gold)] text-sm mb-6">
+              Interior Solution's
             </p>
 
-            <div className="space-y-8">
+            <h3
+              className="text-5xl leading-tight mb-10 text-white"
+              style={{
+                fontFamily: "var(--font-serif)",
+              }}
+            >
+              Start Your
+              <span className="italic text-[var(--gold)]">
+                {" "}
+                Dream Space
+              </span>
+            </h3>
 
-              <motion.div
-                whileHover={{ x: 10 }}
-                className="border-b border-gray-800 pb-4"
-              >
-                <h3 className="text-xl text-[var(--gold)] mb-2">
-                  Address
-                </h3>
+            <p className="text-gray-400 leading-relaxed text-lg mb-12">
+              From luxurious residential interiors to premium
+              commercial spaces, we create timeless experiences
+              crafted with elegance and precision.
+            </p>
 
-                <p className="text-gray-400">
-                  Chandrapur, Maharashtra, India
+            {/* Contact Info */}
+            <div className="space-y-10">
+
+              {/* Email */}
+              <div>
+
+                <p className="uppercase tracking-[0.2em] text-[var(--gold)] text-xs mb-3">
+                  Email
                 </p>
-              </motion.div>
 
-              <motion.div
-                whileHover={{ x: 10 }}
-                className="border-b border-gray-800 pb-4"
-              >
-                <h3 className="text-xl text-[var(--gold)] mb-2">
+                <p className="text-gray-300 text-lg">
+                  interiorsolutions@gmail.com
+                </p>
+
+              </div>
+
+              {/* Phone */}
+              <div>
+
+                <p className="uppercase tracking-[0.2em] text-[var(--gold)] text-xs mb-3">
                   Phone
-                </h3>
+                </p>
 
-                <p className="text-gray-400">
+                <p className="text-gray-300 text-lg">
                   +91 98765 43210
                 </p>
-              </motion.div>
 
-              <motion.div
-                whileHover={{ x: 10 }}
-                className="border-b border-gray-800 pb-4"
-              >
-                <h3 className="text-xl text-[var(--gold)] mb-2">
-                  Email
-                </h3>
+              </div>
 
-                <p className="text-gray-400">
-                  interiorsolutions1125@email.com
+              {/* Nagpur Office */}
+              <div>
+
+                <p className="uppercase tracking-[0.2em] text-[var(--gold)] text-xs mb-3">
+                  Nagpur Office
                 </p>
-              </motion.div>
+
+                <a
+                  href="https://maps.app.goo.gl/xycTBAn9pwzHDTDF9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    text-gray-300
+                    text-lg
+                    hover:text-[var(--gold)]
+                    transition-all
+                    duration-500
+                  "
+                >
+                  View on Google Maps ↗
+                </a>
+
+              </div>
+
+              {/* Chandrapur Office */}
+              <div>
+
+                <p className="uppercase tracking-[0.2em] text-[var(--gold)] text-xs mb-3">
+                  Chandrapur Office
+                </p>
+
+                <a
+                  href="https://maps.app.goo.gl/txVCXxEKspnZUTs9A"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    text-gray-300
+                    text-lg
+                    hover:text-[var(--gold)]
+                    transition-all
+                    duration-500
+                  "
+                >
+                  View on Google Maps ↗
+                </a>
+
+              </div>
+
+              {/* Service Areas */}
+              <div>
+
+                <p className="uppercase tracking-[0.2em] text-[var(--gold)] text-xs mb-3">
+                  Service Areas
+                </p>
+
+                <p className="text-gray-300 text-lg">
+                  Nagpur · Chandrapur · Maharashtra
+                </p>
+
+              </div>
 
             </div>
+
           </motion.div>
 
           {/* Right Form */}
-          <motion.form
+          <motion.div
             initial={{ opacity: 0, x: 80 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 1.2 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="
+              bg-[#0b0b0b]
+              border
+              border-[rgba(212,20,90,0.18)]
+              rounded-[36px]
+              p-12
+              premium-glow
+            "
           >
 
-            <motion.input
-              whileFocus={{ scale: 1.01 }}
-              type="text"
-              placeholder="Your Name"
-              className="w-full bg-[#111] border border-gray-800 px-6 py-4 outline-none focus:border-[var(--gold)] transition"
-            />
-
-            <motion.input
-              whileFocus={{ scale: 1.01 }}
-              type="email"
-              placeholder="Your Email"
-              className="w-full bg-[#111] border border-gray-800 px-6 py-4 outline-none focus:border-[var(--gold)] transition"
-            />
-
-            <motion.input
-              whileFocus={{ scale: 1.01 }}
-              type="text"
-              placeholder="Project Type"
-              className="w-full bg-[#111] border border-gray-800 px-6 py-4 outline-none focus:border-[var(--gold)] transition"
-            />
-
-            <motion.textarea
-              whileFocus={{ scale: 1.01 }}
-              placeholder="Tell us about your project..."
-              rows={6}
-              className="w-full bg-[#111] border border-gray-800 px-6 py-4 outline-none focus:border-[var(--gold)] transition resize-none"
-            />
-
-            <motion.button
-              whileHover={{
-                scale: 1.03,
-                y: -3,
-              }}
-              whileTap={{ scale: 0.97 }}
-              className="px-10 py-4 bg-[var(--gold)] text-black font-medium"
+            <form
+              action="https://formspree.io/f/mnjrjwyk"
+              method="POST"
+              className="space-y-8"
             >
-              Send Message
-            </motion.button>
 
-          </motion.form>
+              {/* Name */}
+              <div>
+
+                <label className="block uppercase tracking-[0.2em] text-xs text-[var(--gold)] mb-3">
+                  Name
+                </label>
+
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  placeholder="Your Name"
+                  className="
+                    w-full
+                    bg-black
+                    border
+                    border-[rgba(255,255,255,0.08)]
+                    px-6
+                    py-5
+                    rounded-2xl
+                    outline-none
+                    text-white
+                    focus:border-[var(--gold)]
+                    transition-all
+                    duration-500
+                  "
+                />
+
+              </div>
+
+              {/* Email */}
+              <div>
+
+                <label className="block uppercase tracking-[0.2em] text-xs text-[var(--gold)] mb-3">
+                  Email
+                </label>
+
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="your@email.com"
+                  className="
+                    w-full
+                    bg-black
+                    border
+                    border-[rgba(255,255,255,0.08)]
+                    px-6
+                    py-5
+                    rounded-2xl
+                    outline-none
+                    text-white
+                    focus:border-[var(--gold)]
+                    transition-all
+                    duration-500
+                  "
+                />
+
+              </div>
+
+              {/* Message */}
+              <div>
+
+                <label className="block uppercase tracking-[0.2em] text-xs text-[var(--gold)] mb-3">
+                  Message
+                </label>
+
+                <textarea
+                  name="message"
+                  required
+                  rows={6}
+                  placeholder="Tell us about your dream project..."
+                  className="
+                    w-full
+                    bg-black
+                    border
+                    border-[rgba(255,255,255,0.08)]
+                    px-6
+                    py-5
+                    rounded-2xl
+                    outline-none
+                    text-white
+                    resize-none
+                    focus:border-[var(--gold)]
+                    transition-all
+                    duration-500
+                  "
+                />
+
+              </div>
+
+              {/* Submit */}
+              <button
+                type="submit"
+                className="
+                  w-full
+                  py-5
+                  bg-[var(--gold)]
+                  text-white
+                  uppercase
+                  tracking-[0.2em]
+                  text-sm
+                  rounded-2xl
+                  hover:scale-[1.02]
+                  transition-all
+                  duration-500
+                "
+              >
+                Send Message
+              </button>
+
+            </form>
+
+          </motion.div>
 
         </div>
+
       </div>
+
     </section>
   );
 }

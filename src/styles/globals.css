@@ -97,16 +97,35 @@ section:nth-child(odd) {
 .hover-lift {
 
   transition:
-    transform 0.5s ease,
-    box-shadow 0.5s ease;
+    transform 0.6s ease,
+    box-shadow 0.6s ease;
 }
 
 .hover-lift:hover {
 
-  transform: translateY(-10px);
+  transform:
+    translateY(-10px);
 
   box-shadow:
     0 20px 60px rgba(212,20,90,0.15);
+}
+
+/* Luxury Hover */
+.luxury-hover {
+
+  transition:
+    transform 0.6s ease,
+    box-shadow 0.6s ease;
+}
+
+.luxury-hover:hover {
+
+  transform:
+    translateY(-10px)
+    scale(1.01);
+
+  box-shadow:
+    0 20px 80px rgba(212,20,90,0.15);
 }
 
 /* Scrollbar */
@@ -158,4 +177,108 @@ a {
 
   transition:
     all 0.5s ease;
+}
+
+/* Premium Floating Animation */
+@keyframes floatSlow {
+
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Ambient Glow Pulse */
+@keyframes glowPulse {
+
+  0% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+
+  100% {
+    opacity: 0.4;
+  }
+}
+
+/* Floating */
+.float-slow {
+
+  animation:
+    floatSlow 6s ease-in-out infinite;
+}
+
+/* Glow Pulse */
+.glow-pulse {
+
+  animation:
+    glowPulse 5s ease-in-out infinite;
+}
+
+/* Luxury Reveal */
+.reveal {
+
+  opacity: 0;
+
+  transform:
+    translateY(40px);
+
+  animation:
+    revealUp 1.2s ease forwards;
+}
+
+@keyframes revealUp {
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      translateY(0px);
+  }
+}
+
+/* Smooth Button Motion */
+button,
+.btn {
+
+  transition:
+    transform 0.5s ease,
+    background 0.5s ease,
+    color 0.5s ease,
+    border 0.5s ease;
+}
+
+button:hover,
+.btn:hover {
+
+  transform:
+    translateY(-3px);
+}
+
+/* Premium Shadows */
+.soft-shadow {
+
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.35);
+}
+
+/* Premium Border Glow */
+.border-glow {
+
+  border:
+    1px solid rgba(212,20,90,0.18);
+
+  box-shadow:
+    0 0 40px rgba(212,20,90,0.08);
 }
