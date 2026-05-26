@@ -97,7 +97,7 @@ export function Contact() {
                 </p>
 
                 <p className="text-gray-300 text-lg">
-                  interiorsolutions@gmail.com
+                  interiorsolutions1125@gmail.com
                 </p>
 
               </div>
@@ -110,7 +110,7 @@ export function Contact() {
                 </p>
 
                 <p className="text-gray-300 text-lg">
-                  +91 98765 43210
+                  +91 9767094859 , +917620436878
                 </p>
 
               </div>
