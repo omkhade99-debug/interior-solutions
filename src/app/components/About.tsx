@@ -4,9 +4,44 @@ export function About() {
   return (
     <section
       id="about"
-      className="bg-[var(--dark2)] text-white py-24 px-[6%] overflow-hidden"
+      className="
+        bg-black
+        text-white
+        py-24
+        px-[6%]
+        overflow-hidden
+        relative
+      "
     >
-      <div className="max-w-7xl mx-auto">
+
+      {/* Ambient Glow */}
+      <div className="absolute inset-0 pointer-events-none">
+
+        <div className="
+          absolute
+          top-[10%]
+          left-[10%]
+          w-[400px]
+          h-[400px]
+          bg-pink-700/10
+          blur-[120px]
+          rounded-full
+        " />
+
+        <div className="
+          absolute
+          bottom-[10%]
+          right-[10%]
+          w-[350px]
+          h-[350px]
+          bg-pink-600/10
+          blur-[120px]
+          rounded-full
+        " />
+
+      </div>
+
+      <div className="max-w-5xl mx-auto relative z-10">
 
         {/* Section Header */}
         <motion.div
@@ -14,14 +49,27 @@ export function About() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="mb-20"
+          className="mb-20 text-center"
         >
-          <p className="uppercase tracking-[0.3em] text-[var(--gold)] text-sm mb-4">
+
+          <p className="
+            uppercase
+            tracking-[0.3em]
+            text-[var(--gold)]
+            text-sm
+            mb-4
+          ">
             About Us
           </p>
 
           <h2
-            className="text-5xl md:text-6xl font-light leading-tight"
+            className="
+              text-5xl
+              md:text-6xl
+              font-light
+              leading-tight
+              text-white
+            "
             style={{ fontFamily: "var(--font-serif)" }}
           >
             Crafting
@@ -32,100 +80,140 @@ export function About() {
             <br />
             Interior Experiences
           </h2>
+
         </motion.div>
 
-        {/* Main Grid */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        {/* Content */}
+        <motion.div
+          initial={{ opacity: 0, y: 80 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="
+            bg-black/50
+            backdrop-blur-xl
+            border
+            border-white/10
+            rounded-[36px]
+            p-12
+            shadow-[0_0_80px_rgba(212,20,90,0.06)]
+          "
+        >
 
-          {/* Left Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -80 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.02 }}
-            className="relative overflow-hidden rounded-3xl"
-          >
-            <img
-              src="/portfolio/living room/living room.jpeg"
-              alt="Interior Design"
-              className="w-full h-[650px] object-cover"
-            />
+          <p className="
+            text-white/70
+            text-lg
+            leading-relaxed
+            mb-8
+          ">
+            Interior Solutions is a premium interior
+            and space design studio focused on creating
+            timeless luxury environments that blend
+            functionality, elegance, and innovation.
+          </p>
 
-            <div className="absolute inset-0 bg-black/20" />
-          </motion.div>
+          <p className="
+            text-white/70
+            text-lg
+            leading-relaxed
+            mb-12
+          ">
+            From modern residential interiors to
+            sophisticated commercial spaces, we design
+            experiences that reflect individuality and
+            elevate everyday living.
+          </p>
 
-          {/* Right Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 80 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-          >
-            <p className="text-gray-400 text-lg leading-relaxed mb-8">
-              Interior Solutions is a premium interior
-              and space design studio focused on creating
-              timeless luxury environments that blend
-              functionality, elegance, and innovation.
-            </p>
+          {/* Features */}
+          <div className="space-y-8">
 
-            <p className="text-gray-400 text-lg leading-relaxed mb-10">
-              From modern residential interiors to
-              sophisticated commercial spaces, we design
-              experiences that reflect individuality and
-              elevate everyday living.
-            </p>
+            {/* Feature 1 */}
+            <motion.div
+              whileHover={{ x: 10 }}
+              className="
+                border-b
+                border-white/10
+                pb-5
+                transition-all
+                duration-500
+              "
+            >
 
-            {/* Features */}
-            <div className="space-y-6">
+              <h3 className="
+                text-2xl
+                text-[var(--gold)]
+                mb-2
+              ">
+                Luxury Interiors
+              </h3>
 
-              <motion.div
-                whileHover={{ x: 10 }}
-                className="border-b border-gray-800 pb-4"
-              >
-                <h3 className="text-2xl text-[var(--gold)] mb-2">
-                  Luxury Interiors
-                </h3>
+              <p className="text-white/65">
+                Premium residential and commercial
+                interior solutions crafted with detail.
+              </p>
 
-                <p className="text-gray-400">
-                  Premium residential and commercial
-                  interior solutions crafted with detail.
-                </p>
-              </motion.div>
+            </motion.div>
 
-              <motion.div
-                whileHover={{ x: 10 }}
-                className="border-b border-gray-800 pb-4"
-              >
-                <h3 className="text-2xl text-[var(--gold)] mb-2">
-                  Space Planning
-                </h3>
+            {/* Feature 2 */}
+            <motion.div
+              whileHover={{ x: 10 }}
+              className="
+                border-b
+                border-white/10
+                pb-5
+                transition-all
+                duration-500
+              "
+            >
 
-                <p className="text-gray-400">
-                  Intelligent layouts balancing comfort,
-                  aesthetics, and functionality.
-                </p>
-              </motion.div>
+              <h3 className="
+                text-2xl
+                text-[var(--gold)]
+                mb-2
+              ">
+                Space Planning
+              </h3>
 
-              <motion.div
-                whileHover={{ x: 10 }}
-                className="border-b border-gray-800 pb-4"
-              >
-                <h3 className="text-2xl text-[var(--gold)] mb-2">
-                  Bespoke Design
-                </h3>
+              <p className="text-white/65">
+                Intelligent layouts balancing comfort,
+                aesthetics, and functionality.
+              </p>
 
-                <p className="text-gray-400">
-                  Personalized design experiences tailored
-                  to every client and lifestyle.
-                </p>
-              </motion.div>
+            </motion.div>
 
-            </div>
-          </motion.div>
+            {/* Feature 3 */}
+            <motion.div
+              whileHover={{ x: 10 }}
+              className="
+                border-b
+                border-white/10
+                pb-5
+                transition-all
+                duration-500
+              "
+            >
 
-        </div>
+              <h3 className="
+                text-2xl
+                text-[var(--gold)]
+                mb-2
+              ">
+                Bespoke Design
+              </h3>
+
+              <p className="text-white/65">
+                Personalized design experiences tailored
+                to every client and lifestyle.
+              </p>
+
+            </motion.div>
+
+          </div>
+
+        </motion.div>
+
       </div>
+
     </section>
   );
 }

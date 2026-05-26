@@ -2,19 +2,20 @@
 
 :root {
 
-  --dark: #050505;
-  --dark2: #0b0b0b;
+  --dark: #000000;
+  --dark2: #050505;
 
-  --wine: #16060d;
-  --wine-light: #220914;
+  --wine: #12040b;
+  --wine-light: #1d0812;
 
   --gold: #d4145a;
   --gold-light: #ff4f93;
 
-  --text: #f5f5f5;
-  --muted: #9ca3af;
+  --text: #ffffff;
 
-  --border-gold: rgba(212, 20, 90, 0.2);
+  --muted: rgba(255,255,255,0.72);
+
+  --border-gold: rgba(212, 20, 90, 0.18);
 
   --font-serif: "Cormorant Garamond", serif;
 }
@@ -32,68 +33,129 @@ html {
 body {
 
   background:
-    radial-gradient(
-      circle at top right,
-      rgba(212,20,90,0.12),
-      transparent 30%
-    ),
-
-    radial-gradient(
-      circle at bottom left,
-      rgba(212,20,90,0.08),
-      transparent 30%
-    ),
-
     linear-gradient(
       135deg,
-      #050505 0%,
-      #0b0b0b 40%,
-      #16060d 100%
+      #000000 0%,
+      #020202 45%,
+      #050505 100%
     );
 
-  color: var(--text);
+  color: white;
 
   font-family: sans-serif;
 
   overflow-x: hidden;
 
   letter-spacing: 0.02em;
+
+  position: relative;
 }
 
-/* Premium Section Variation */
+/* Subtle Luxury Ambient Glow */
+
+body::before {
+
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: -1;
+
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(212,20,90,0.08),
+      transparent 24%
+    ),
+
+    radial-gradient(
+      circle at 80% 30%,
+      rgba(212,20,90,0.06),
+      transparent 28%
+    ),
+
+    radial-gradient(
+      circle at 50% 80%,
+      rgba(255,79,147,0.04),
+      transparent 30%
+    );
+
+  animation:
+    ambientMove 18s ease-in-out infinite alternate;
+}
+
+/* Luxury Ambient Motion */
+
+@keyframes ambientMove {
+
+  0% {
+
+    transform:
+      translate3d(0px, 0px, 0px)
+      scale(1);
+  }
+
+  50% {
+
+    transform:
+      translate3d(-30px, 20px, 0px)
+      scale(1.05);
+  }
+
+  100% {
+
+    transform:
+      translate3d(30px, -20px, 0px)
+      scale(1.08);
+  }
+}
+
+/* DARK SECTION STYLE */
+
 section:nth-child(even) {
 
   background:
     linear-gradient(
       180deg,
-      rgba(255,255,255,0.01),
-      rgba(255,255,255,0.02)
+      rgba(0,0,0,0.2),
+      rgba(0,0,0,0.1)
     );
 }
 
 section:nth-child(odd) {
-  background: transparent;
+
+  background:
+    transparent;
 }
 
-/* Premium Glow */
+/* PREMIUM GLOW */
+
 .premium-glow {
 
   box-shadow:
     0 0 120px rgba(212,20,90,0.08);
-
 }
 
-/* Glass Effect */
+/* GLASS EFFECT */
+
 .glass {
 
-  background: rgba(255,255,255,0.04);
+  background:
+    rgba(0,0,0,0.45);
 
-  backdrop-filter: blur(16px);
+  backdrop-filter:
+    blur(18px);
 
-  border: 1px solid rgba(255,255,255,0.08);
+  border:
+    1px solid rgba(255,255,255,0.06);
 }
 
-/* Smooth Hover */
+/* HOVER LIFT */
+
 .hover-lift {
 
   transition:
@@ -107,10 +169,11 @@ section:nth-child(odd) {
     translateY(-10px);
 
   box-shadow:
-    0 20px 60px rgba(212,20,90,0.15);
+    0 20px 60px rgba(212,20,90,0.12);
 }
 
-/* Luxury Hover */
+/* LUXURY HOVER */
+
 .luxury-hover {
 
   transition:
@@ -125,10 +188,11 @@ section:nth-child(odd) {
     scale(1.01);
 
   box-shadow:
-    0 20px 80px rgba(212,20,90,0.15);
+    0 20px 80px rgba(212,20,90,0.12);
 }
 
-/* Scrollbar */
+/* SCROLLBAR */
+
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -149,7 +213,8 @@ section:nth-child(odd) {
   border-radius: 999px;
 }
 
-/* Text Selection */
+/* TEXT SELECTION */
+
 ::selection {
 
   background: #d4145a;
@@ -157,7 +222,8 @@ section:nth-child(odd) {
   color: white;
 }
 
-/* Premium Typography */
+/* TYPOGRAPHY */
+
 h1,
 h2,
 h3,
@@ -166,20 +232,23 @@ h4 {
   letter-spacing: -0.03em;
 }
 
-/* Image Premium Look */
+/* IMAGES */
+
 img {
 
   object-fit: cover;
 }
 
-/* Better Links */
+/* LINKS */
+
 a {
 
   transition:
     all 0.5s ease;
 }
 
-/* Premium Floating Animation */
+/* FLOATING */
+
 @keyframes floatSlow {
 
   0% {
@@ -195,7 +264,14 @@ a {
   }
 }
 
-/* Ambient Glow Pulse */
+.float-slow {
+
+  animation:
+    floatSlow 6s ease-in-out infinite;
+}
+
+/* GLOW PULSE */
+
 @keyframes glowPulse {
 
   0% {
@@ -211,21 +287,14 @@ a {
   }
 }
 
-/* Floating */
-.float-slow {
-
-  animation:
-    floatSlow 6s ease-in-out infinite;
-}
-
-/* Glow Pulse */
 .glow-pulse {
 
   animation:
     glowPulse 5s ease-in-out infinite;
 }
 
-/* Luxury Reveal */
+/* REVEAL */
+
 .reveal {
 
   opacity: 0;
@@ -248,7 +317,8 @@ a {
   }
 }
 
-/* Smooth Button Motion */
+/* BUTTONS */
+
 button,
 .btn {
 
@@ -266,19 +336,125 @@ button:hover,
     translateY(-3px);
 }
 
-/* Premium Shadows */
+/* SHADOWS */
+
 .soft-shadow {
 
   box-shadow:
     0 10px 40px rgba(0,0,0,0.35);
 }
 
-/* Premium Border Glow */
+/* BORDER GLOW */
+
 .border-glow {
 
   border:
-    1px solid rgba(212,20,90,0.18);
+    1px solid rgba(212,20,90,0.15);
 
   box-shadow:
-    0 0 40px rgba(212,20,90,0.08);
+    0 0 40px rgba(212,20,90,0.06);
+}
+
+/* PORTFOLIO SWIPER */
+
+.portfolio-swiper .swiper-slide img {
+
+  transition:
+    transform 7s ease;
+}
+
+.portfolio-swiper .swiper-slide-active img {
+
+  transform:
+    scale(1.08);
+}
+
+.portfolio-swiper .swiper-pagination-bullet {
+
+  background:
+    rgba(255,255,255,0.4);
+
+  opacity: 1;
+}
+
+.portfolio-swiper .swiper-pagination-bullet-active {
+
+  background:
+    #d4145a;
+}
+
+.portfolio-swiper .swiper-button-next,
+.portfolio-swiper .swiper-button-prev {
+
+  color: white;
+
+  transform:
+    scale(0.7);
+
+  transition:
+    all 0.4s ease;
+}
+
+.portfolio-swiper .swiper-button-next:hover,
+.portfolio-swiper .swiper-button-prev:hover {
+
+  color:
+    #d4145a;
+}
+
+/* MOUSE GLOW */
+
+.mouse-glow {
+
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(212,20,90,0.18) 0%,
+      rgba(212,20,90,0.08) 30%,
+      transparent 70%
+    );
+
+  filter:
+    blur(70px);
+
+  pointer-events: none;
+
+  transform:
+    translate(-50%, -50%);
+
+  animation:
+    floatingGlow 10s ease-in-out infinite;
+}
+
+@keyframes floatingGlow {
+
+  0% {
+    top: 20%;
+    left: 20%;
+  }
+
+  25% {
+    top: 30%;
+    left: 70%;
+  }
+
+  50% {
+    top: 70%;
+    left: 60%;
+  }
+
+  75% {
+    top: 60%;
+    left: 30%;
+  }
+
+  100% {
+    top: 20%;
+    left: 20%;
+  }
 }
