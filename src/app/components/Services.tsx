@@ -1,63 +1,120 @@
+import { motion } from "framer-motion";
+
 const services = [
   {
-    num: '01',
-    title: 'Residential Design',
+    title: "Luxury Interiors",
     description:
-      'Complete home interiors — living rooms, bedrooms, kitchens, bathrooms — designed around how you actually live.',
+      "Elegant residential and commercial interiors crafted with premium materials and timeless aesthetics.",
   },
+
   {
-    num: '02',
-    title: 'Commercial Interiors',
+    title: "Space Planning",
     description:
-      'Offices, showrooms, and hospitality spaces that blend function with a strong brand identity.',
+      "Functional layouts designed to maximize comfort, circulation, and visual harmony.",
   },
+
   {
-    num: '03',
-    title: 'Space Planning',
+    title: "Furniture Design",
     description:
-      'Smart layouts that maximize flow, natural light, and usability — before construction begins.',
+      "Custom furniture concepts tailored to match the personality and identity of each space.",
   },
+
   {
-    num: '04',
-    title: '3D Design & Visualization',
+    title: "Lighting Design",
     description:
-      'Photorealistic renders of your space so you can approve every detail before execution.',
+      "Sophisticated lighting solutions that enhance ambience, depth, and architectural beauty.",
+  },
+
+  {
+    title: "Renovation",
+    description:
+      "Transforming existing spaces into modern luxury environments with refined detailing.",
+  },
+
+  {
+    title: "3D Visualization",
+    description:
+      "Realistic 3D renders and visual presentations to help clients experience the design before execution.",
   },
 ];
 
 export function Services() {
   return (
-    <section id="services" className="bg-[var(--dark)] px-[4%] py-24">
-      <div>
-        <p className="flex items-center gap-4 text-[0.72rem] tracking-[0.25em] uppercase text-[var(--gold)] mb-4 after:content-[''] after:flex-1 after:h-[1px] after:bg-[var(--border-gold)] after:max-w-[80px]">
-          What We Do
-        </p>
-        <h2>
-          Our <em className="italic text-[var(--gold)]">Services</em>
-        </h2>
-      </div>
+    <section
+      id="services"
+      className="bg-black text-white py-24 px-[6%] overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto">
 
-      {/* Services Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[1px] bg-[var(--border-gold)] border border-[var(--border-gold)] mt-12">
-        {services.map((service) => (
-          <div
-            key={service.num}
-            className="bg-[var(--dark)] p-10 transition-colors duration-250 hover:bg-[var(--dark2)]"
+        {/* Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 80 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="mb-20 text-center"
+        >
+          <p className="uppercase tracking-[0.3em] text-[var(--gold)] text-sm mb-4">
+            Services
+          </p>
+
+          <h2
+            className="text-5xl md:text-6xl font-light leading-tight"
+            style={{ fontFamily: "var(--font-serif)" }}
           >
-            <div
-              className="text-[2.5rem] font-light text-[rgba(200,24,90,0.3)] leading-none mb-6"
-              style={{ fontFamily: 'var(--font-serif)' }}
+            What We
+            <span className="italic text-[var(--gold)]">
+              {" "}
+              Create
+            </span>
+          </h2>
+        </motion.div>
+
+        {/* Services Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 80 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.8,
+                delay: index * 0.1,
+              }}
+              viewport={{ once: true }}
+              whileHover={{
+                y: -10,
+                scale: 1.02,
+              }}
+              className="bg-[var(--dark2)] border border-gray-800 p-10 transition-all duration-300 hover:border-[var(--gold)]"
             >
-              {service.num}
-            </div>
-            <h3 className="text-base font-medium text-[var(--text)] mb-3 tracking-wide">
-              {service.title}
-            </h3>
-            <p className="text-[0.82rem] text-[var(--text-muted)] leading-relaxed">
-              {service.description}
-            </p>
-          </div>
-        ))}
+
+              {/* Number */}
+              <p className="text-[var(--gold)] text-4xl font-light mb-8">
+                0{index + 1}
+              </p>
+
+              {/* Title */}
+              <h3
+                className="text-2xl mb-4"
+                style={{
+                  fontFamily: "var(--font-serif)",
+                }}
+              >
+                {service.title}
+              </h3>
+
+              {/* Description */}
+              <p className="text-gray-400 leading-relaxed">
+                {service.description}
+              </p>
+
+            </motion.div>
+          ))}
+
+        </div>
+
       </div>
     </section>
   );

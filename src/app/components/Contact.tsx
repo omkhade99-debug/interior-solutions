@@ -262,6 +262,92 @@ export function Contact() {
 
               </div>
 
+              {/* Contact Number */}
+              <div>
+
+                <label className="block uppercase tracking-[0.2em] text-xs text-[var(--gold)] mb-3">
+                  Contact Number
+                </label>
+
+                <input
+                  type="tel"
+                  name="phone"
+                  required
+                  inputMode="numeric"
+                  pattern="[0-9]{10}"
+                  placeholder="Enter Your Number"
+                  className="
+                    w-full
+                    bg-black
+                    border
+                    border-[rgba(255,255,255,0.08)]
+                    px-6
+                    py-5
+                    rounded-2xl
+                    outline-none
+                    text-white
+                    focus:border-[var(--gold)]
+                    transition-all
+                    duration-500
+                  "
+                />
+
+              </div>
+
+              {/* Design Type */}
+              <div>
+
+                <label className="block uppercase tracking-[0.2em] text-xs text-[var(--gold)] mb-3">
+                  Design Type
+                </label>
+
+                <select
+                  name="designType"
+                  required
+                  className="
+                    w-full
+                    bg-black
+                    border
+                    border-[rgba(255,255,255,0.08)]
+                    px-6
+                    py-5
+                    rounded-2xl
+                    outline-none
+                    text-white
+                    focus:border-[var(--gold)]
+                    transition-all
+                    duration-500
+                  "
+                >
+
+                  <option value="">
+                    Select Design Type
+                  </option>
+
+                  <option value="Residential Interior">
+                    Residential Interior
+                  </option>
+
+                  <option value="Commercial Interior">
+                    Commercial Interior
+                  </option>
+
+                  <option value="Office Interior">
+                    Office Interior
+                  </option>
+
+                  <option value="Hospital Interior">
+                    Hospital Interior
+                  </option>
+
+                  <option value="Renovation">
+                    Renovation
+                  </option>
+
+                </select>
+
+              </div>
+
               {/* Message */}
               <div>
 

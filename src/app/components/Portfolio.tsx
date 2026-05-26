@@ -1,26 +1,25 @@
-import { useState } from "react";
+import { motion } from "framer-motion";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+
+import {
+  Autoplay,
+  Pagination,
+  Navigation,
+} from "swiper/modules";
 
 import "swiper/css";
-import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 
-type ProjectCategory =
-  | "all"
-  | "residential"
-  | "commercial"
-  | "renovation";
-
-interface Project {
+type Project = {
   id: number;
-  category: ProjectCategory;
+  category: string;
   categoryLabel: string;
   name: string;
   featured?: boolean;
   images: string[];
-}
+};
 
 const projects: Project[] = [
   {
@@ -31,9 +30,13 @@ const projects: Project[] = [
     featured: true,
 
     images: [
-      "/portfolio/living room/living room.jpeg",
-      "/portfolio/living room/living room2.jpeg",
-      "/portfolio/living room/living room 3.jpeg",
+      "/portfolio/living room/living room final1.jpg",
+      "/portfolio/living room/living room final2.jpg",
+      "/portfolio/living room/living room final3.jpg",
+      "/portfolio/living room/livingroom final4.jpeg",
+      "/portfolio/living room/livingroom final5.jpeg",
+      "/portfolio/living room/livingroom final6.jpeg",
+      "/portfolio/living room/livingroom final7.jpeg",
     ],
   },
 
@@ -46,8 +49,9 @@ const projects: Project[] = [
     images: [
       "/portfolio/office/office.jpeg",
       "/portfolio/office/office2.jpeg",
+      "/portfolio/office/office3.jpeg",
       "/portfolio/office/office 3.jpeg",
-         ],
+    ],
   },
 
   {
@@ -62,6 +66,7 @@ const projects: Project[] = [
       "/portfolio/bedroom/bedroom3.jpeg",
       "/portfolio/bedroom/bedroom4.jpeg",
       "/portfolio/bedroom/bedroom5.jpeg",
+      "/portfolio/bedroom/bedroom6.jpeg",
     ],
   },
 
@@ -72,7 +77,6 @@ const projects: Project[] = [
     name: "Modern Kitchen Design",
 
     images: [
-      "/portfolio/kitchen/kitchen.jpeg",
       "/portfolio/kitchen/kitchen2.jpeg",
     ],
   },
@@ -80,132 +84,161 @@ const projects: Project[] = [
   {
     id: 5,
     category: "commercial",
-    categoryLabel: "Commercial · Showroom",
-    name: "Retail Experience Design",
+    categoryLabel: "Commercial · Hospital",
+    name: "Spaces That Heal",
 
     images: [
       "/portfolio/office/office.jpeg",
       "/portfolio/office/office2.jpeg",
-      "/portfolio/office/office 3.jpeg",
+      "/portfolio/office/office3.jpeg",
     ],
   },
 ];
 
-const filters: {
-  value: ProjectCategory;
-  label: string;
-}[] = [
-  { value: "all", label: "All" },
-  { value: "residential", label: "Residential" },
-  { value: "commercial", label: "Commercial" },
-  { value: "renovation", label: "Renovation" },
-];
-
 export function Portfolio() {
-  const [activeFilter, setActiveFilter] =
-    useState<ProjectCategory>("all");
-
-  const filteredProjects =
-    activeFilter === "all"
-      ? projects
-      : projects.filter(
-          (p) => p.category === activeFilter
-        );
-
   return (
     <section
       id="work"
-      className="bg-[var(--dark)] px-[4%] py-24"
+      className="py-28 px-[6%] bg-black overflow-hidden relative"
     >
-      {/* Header */}
-      <div className="flex justify-between items-end mb-12 flex-wrap gap-4">
-        <div>
-          <p className="flex items-center gap-4 text-[0.72rem] tracking-[0.25em] uppercase text-[var(--gold)] mb-4">
+
+      {/* Background Glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(212,20,90,0.08),transparent_35%)]" />
+
+      <div className="relative z-10 max-w-7xl mx-auto">
+
+        {/* Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 80 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2 }}
+          viewport={{ once: true }}
+          className="text-center mb-24"
+        >
+
+          <p className="uppercase tracking-[0.35em] text-[var(--gold)] text-sm mb-6">
             Portfolio
           </p>
 
-          <h2 className="text-5xl text-white">
-            Our{" "}
-            <em className="italic text-[var(--gold)]">
-              Work
-            </em>
-          </h2>
-        </div>
-
-        {/* Filters */}
-        <div className="flex gap-2 flex-wrap">
-          {filters.map((filter) => (
-            <button
-              key={filter.value}
-              onClick={() =>
-                setActiveFilter(filter.value)
-              }
-              className={`px-5 py-2 border text-[0.75rem] tracking-[0.1em] uppercase transition-all duration-200 ${
-                activeFilter === filter.value
-                  ? "border-[var(--gold)] text-[var(--gold)]"
-                  : "border-gray-700 text-gray-400 hover:border-[var(--gold)] hover:text-[var(--gold)]"
-              }`}
-            >
-              {filter.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Portfolio Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredProjects.map((project) => (
-          <div
-            key={project.id}
-            className={`overflow-hidden border border-gray-700 bg-black transition-all duration-300 hover:border-[var(--gold)] ${
-              project.featured
-                ? "md:col-span-2"
-                : ""
-            }`}
+          <h2
+            className="text-6xl md:text-7xl leading-[0.95] font-light text-white"
+            style={{
+              fontFamily: "var(--font-serif)",
+            }}
           >
-            {/* Image Slider */}
-            <Swiper
-              modules={[
-                Navigation,
-                Pagination,
-                Autoplay,
-              ]}
-              navigation
-              pagination={{ clickable: true }}
-              autoplay={{ delay: 2500 }}
-              loop={true}
-              className={
-                project.featured
-                  ? "aspect-video"
-                  : "aspect-[4/3]"
-              }
+            Crafted
+            <span className="italic text-[var(--gold)]">
+              {" "}
+              Luxury
+            </span>
+            <br />
+            Spaces
+          </h2>
+
+        </motion.div>
+
+        {/* Portfolio Grid */}
+        <div className="grid lg:grid-cols-2 gap-10">
+
+          {projects.map((project, index) => (
+
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 1,
+                delay: index * 0.15,
+              }}
+              viewport={{ once: true }}
+              className="
+                bg-[#0b0b0b]
+                border
+                border-[rgba(255,255,255,0.06)]
+                rounded-[32px]
+                overflow-hidden
+                premium-glow
+                hover-lift
+              "
             >
-              {project.images.map(
-                (image, index) => (
-                  <SwiperSlide key={index}>
-                    <img
-                      src={image}
-                      alt={project.name}
-                      className="w-full h-full object-cover hover:scale-105 transition duration-700"
-                    />
-                  </SwiperSlide>
-                )
-              )}
-            </Swiper>
 
-            {/* Project Info */}
-            <div className="p-6">
-              <p className="text-sm uppercase text-[var(--gold)] mb-2">
-                {project.categoryLabel}
-              </p>
+              {/* Slideshow */}
+              <div className="relative">
 
-              <h3 className="text-xl text-white">
-                {project.name}
-              </h3>
-            </div>
-          </div>
-        ))}
+                <Swiper
+                  modules={[
+                    Autoplay,
+                    Pagination,
+                    Navigation,
+                  ]}
+                  autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                  }}
+                  speed={1400}
+                  loop={true}
+                  pagination={{
+                    clickable: true,
+                  }}
+                  navigation={true}
+                  className="portfolio-swiper"
+                >
+
+                  {project.images.map((image, i) => (
+
+                    <SwiperSlide key={i}>
+
+                      <div className="aspect-[4/3] overflow-hidden">
+
+                        <img
+                          src={image}
+                          alt={project.name}
+                          className="
+                            w-full
+                            h-full
+                            object-cover
+                            transition-transform
+                            duration-[7000ms]
+                            hover:scale-110
+                          "
+                        />
+
+                      </div>
+
+                    </SwiperSlide>
+
+                  ))}
+
+                </Swiper>
+
+              </div>
+
+              {/* Content */}
+              <div className="p-8">
+
+                <p className="uppercase tracking-[0.2em] text-[var(--gold)] text-xs mb-4">
+                  {project.categoryLabel}
+                </p>
+
+                <h3
+                  className="text-3xl text-white leading-tight"
+                  style={{
+                    fontFamily: "var(--font-serif)",
+                  }}
+                >
+                  {project.name}
+                </h3>
+
+              </div>
+
+            </motion.div>
+
+          ))}
+
+        </div>
+
       </div>
+
     </section>
   );
 }

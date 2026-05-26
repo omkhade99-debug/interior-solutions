@@ -1,56 +1,122 @@
+import { motion } from "framer-motion";
+
 export function Experience() {
   return (
-    <section className="bg-[var(--dark)] px-[4%] py-24">
+    <section
+      id="experience"
+      className="bg-[var(--dark2)] text-white py-24 px-[6%] overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto">
 
         {/* Heading */}
-        <div className="mb-16">
-          <p className="text-[0.75rem] tracking-[0.25em] uppercase text-[var(--gold)] mb-4">
+        <motion.div
+          initial={{ opacity: 0, y: 80 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="mb-20 text-center"
+        >
+          <p className="uppercase tracking-[0.3em] text-[var(--gold)] text-sm mb-4">
             Experience
           </p>
 
-          <h2 className="text-5xl leading-tight">
-            20 Years of <em className="text-[#c2185b] italic">Work Done</em>
+          <h2
+            className="text-5xl md:text-6xl font-light leading-tight"
+            style={{ fontFamily: "var(--font-serif)" }}
+          >
+            Years of
+            <span className="italic text-[var(--gold)]">
+              {" "}
+              Design
+            </span>
+            <br />
+            Excellence
           </h2>
-        </div>
+        </motion.div>
 
-        {/* Grid */}
+        {/* Stats Grid */}
         <div className="grid md:grid-cols-3 gap-8">
 
-          <div className="border border-[var(--border-gold)] p-8 bg-[var(--dark2)]">
-            <h3 className="text-[#c2185b] text-xl mb-6">Nagpur</h3>
+          {/* Card 1 */}
+          <motion.div
+            initial={{ opacity: 0, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            whileHover={{
+              y: -10,
+              scale: 1.02,
+            }}
+            className="bg-black border border-gray-800 p-10 text-center transition-all duration-300"
+          >
+            <h3 className="text-6xl text-[var(--gold)] font-light mb-4">
+              500+
+            </h3>
 
-            <ul className="space-y-3 text-[var(--text-muted)]">
-              <li>Mr. Devendra Gawande</li>
-              <li>Mr. Prakash Nikhade</li>
-              <li>Mr. Darshan Raut</li>
-              <li>Mr. Bhaskar Dhumne</li>
-            </ul>
-          </div>
+            <p className="uppercase tracking-[0.2em] text-gray-400 text-sm">
+              Luxury Projects
+            </p>
+          </motion.div>
 
-          <div className="border border-[var(--border-gold)] p-8 bg-[var(--dark2)]">
-            <h3 className="text-[#c2185b] text-xl mb-6">Chandrapur</h3>
+          {/* Card 2 */}
+          <motion.div
+            initial={{ opacity: 0, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+            whileHover={{
+              y: -10,
+              scale: 1.02,
+            }}
+            className="bg-black border border-gray-800 p-10 text-center transition-all duration-300"
+          >
+            <h3 className="text-6xl text-[var(--gold)] font-light mb-4">
+              20+
+            </h3>
 
-            <ul className="space-y-3 text-[var(--text-muted)]">
-              <li>Collector Bungalow</li>
-              <li>Dr. Khutemate Hospital</li>
-              <li>Dr. Wasade Hospital</li>
-              <li>Tadoba Butterfly Garden</li>
-            </ul>
-          </div>
+            <p className="uppercase tracking-[0.2em] text-gray-400 text-sm">
+              Years Experience
+            </p>
+          </motion.div>
 
-          <div className="border border-[var(--border-gold)] p-8 bg-[var(--dark2)]">
-            <h3 className="text-[#c2185b] text-xl mb-6">Other Cities</h3>
+          {/* Card 3 */}
+          <motion.div
+            initial={{ opacity: 0, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2 }}
+            viewport={{ once: true }}
+            whileHover={{
+              y: -10,
+              scale: 1.02,
+            }}
+            className="bg-black border border-gray-800 p-10 text-center transition-all duration-300"
+          >
+            <h3 className="text-6xl text-[var(--gold)] font-light mb-4">
+              25+
+            </h3>
 
-            <ul className="space-y-3 text-[var(--text-muted)]">
-              <li>Delhi — Mr. Anil Chopra</li>
-              <li>Satna — Dr. Dhiren Pande</li>
-              <li>Pune — Mr. Prashant Diwase</li>
-              <li>Hyderabad — Mr. Gupta Sir</li>
-            </ul>
-          </div>
+            <p className="uppercase tracking-[0.2em] text-gray-400 text-sm">
+              Design Awards
+            </p>
+          </motion.div>
 
         </div>
+
+        {/* Bottom Text */}
+        <motion.div
+          initial={{ opacity: 0, y: 80 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.4 }}
+          viewport={{ once: true }}
+          className="mt-20 text-center max-w-3xl mx-auto"
+        >
+          <p className="text-gray-400 text-lg leading-relaxed">
+            We believe exceptional interiors are more
+            than aesthetics — they are experiences that
+            inspire, comfort, and elevate everyday life.
+          </p>
+        </motion.div>
+
       </div>
     </section>
   );
