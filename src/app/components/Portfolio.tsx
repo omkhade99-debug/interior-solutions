@@ -22,77 +22,53 @@ type Project = {
 };
 
 const projects: Project[] = [
+
   {
     id: 1,
     category: "residential",
     categoryLabel: "Residential · Living Room",
-    name: "Modern Luxury Apartment — Nagpur",
-    featured: true,
+    name: "Modern Luxury Living",
 
     images: [
-      "/portfolio/living room/living room final1.jpg",
-      "/portfolio/living room/living room final2.jpg",
-      "/portfolio/living room/living room final3.jpg",
-      "/portfolio/living room/livingroom final4.jpeg",
-      "/portfolio/living room/livingroom final5.jpeg",
-      "/portfolio/living room/livingroom final6.jpeg",
-      "/portfolio/living room/livingroom final7.jpeg",
+      "/portfolio/living dining/living room final1.jpg",
+      "/portfolio/living dining/living room final2.jpg",
+      "/portfolio/living dining/living room final3.jpg",
+     "/portfolio/living dining/livingroom final5.jpeg",
+      "/portfolio/living dining/livingroom final6.jpeg",
+      "/portfolio/living dining/livingroom final7.jpeg",
     ],
   },
 
   {
     id: 2,
-    category: "commercial",
-    categoryLabel: "Commercial · Office",
-    name: "Corporate Suite — Chandrapur",
+    category: "residential",
+    categoryLabel: "Residential · Bedroom",
+    name: "Elegant Bedroom Concepts",
 
     images: [
-      "/portfolio/office/office.jpeg",
-      "/portfolio/office/office2.jpeg",
-      "/portfolio/office/office3.jpeg",
-      "/portfolio/office/office 3.jpeg",
+      "/portfolio/bedroom/bedroom final1.jpg",
+      "/portfolio/bedroom/bedroom final2.jpg",
+      "/portfolio/bedroom/bedroom final3.jpg",
+      "/portfolio/bedroom/bedroom final4.jpg",
+      "/portfolio/bedroom/bedroom final5.jpg",
+      "/portfolio/bedroom/bedroom final6.jpg",
     ],
   },
 
   {
     id: 3,
     category: "residential",
-    categoryLabel: "Residential · Bedroom",
-    name: "Contemporary Master Suite",
+    categoryLabel: "Residential · Kitchen",
+    name: "Luxury Kitchen Interiors",
 
     images: [
-      "/portfolio/bedroom/bedroom.jpeg",
-      "/portfolio/bedroom/bedroom2.jpeg",
-      "/portfolio/bedroom/bedroom3.jpeg",
-      "/portfolio/bedroom/bedroom4.jpeg",
-      "/portfolio/bedroom/bedroom5.jpeg",
-      "/portfolio/bedroom/bedroom6.jpeg",
+      "/portfolio/kitchen/kitchen final1.jpg",
+      "/portfolio/kitchen/kitchen final2.jpg",
     ],
   },
 
-  {
-    id: 4,
-    category: "renovation",
-    categoryLabel: "Renovation · Kitchen",
-    name: "Modern Kitchen Design",
+  
 
-    images: [
-      "/portfolio/kitchen/kitchen2.jpeg",
-    ],
-  },
-
-  {
-    id: 5,
-    category: "commercial",
-    categoryLabel: "Commercial · Hospital",
-    name: "Spaces That Heal",
-
-    images: [
-      "/portfolio/office/office.jpeg",
-      "/portfolio/office/office2.jpeg",
-      "/portfolio/office/office3.jpeg",
-    ],
-  },
 ];
 
 export function Portfolio() {
@@ -152,7 +128,7 @@ export function Portfolio() {
               }}
               viewport={{ once: true }}
               className="
-                bg-[#0b0b0b]
+                bg-[#050505]
                 border
                 border-[rgba(255,255,255,0.06)]
                 rounded-[32px]
