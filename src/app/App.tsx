@@ -13,40 +13,144 @@ import { Footer } from "./components/Footer";
 import { Loader } from "./components/loader";
 
 export default function App() {
+
   const [loading, setLoading] = useState(true);
-  const [soundOn, setSoundOn] = useState(false);
 
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  /* ONLY FOR AMBIENT MUSIC */
+  const [musicOn, setMusicOn] = useState(true);
 
-  /* Loader */
+  /* Ambient Music Ref */
+  const ambientRef = useRef<HTMLAudioElement | null>(null);
+
+  /* UI SOUNDS */
+  const hoverSoundRef = useRef<HTMLAudioElement | null>(null);
+
+  const clickSoundRef = useRef<HTMLAudioElement | null>(null);
+
+  /* ---------------- INITIALIZE SOUNDS ---------------- */
+
   useEffect(() => {
+
+    hoverSoundRef.current = new Audio("/audio/ui hover.mp3");
+
+    clickSoundRef.current = new Audio("/audio/soft click.mp3");
+
+    if (hoverSoundRef.current) {
+      hoverSoundRef.current.volume = 0.05;
+    }
+
+    if (clickSoundRef.current) {
+      clickSoundRef.current.volume = 0.12;
+    }
+
+  }, []);
+
+  /* ---------------- HOVER SOUND ---------------- */
+
+  const playHover = () => {
+
+    if (!hoverSoundRef.current) return;
+
+    hoverSoundRef.current.currentTime = 0;
+
+    hoverSoundRef.current.play().catch(() => {});
+  };
+
+  /* ---------------- CLICK SOUND ---------------- */
+
+  const playClick = () => {
+
+    if (!clickSoundRef.current) return;
+
+    clickSoundRef.current.currentTime = 0;
+
+    clickSoundRef.current.play().catch(() => {});
+  };
+
+  /* ---------------- GLOBAL SITE SOUNDS ---------------- */
+
+  useEffect(() => {
+
+    const handleHover = (e: MouseEvent) => {
+
+      const target = e.target as HTMLElement;
+
+      if (
+        target.closest("button") ||
+        target.closest("a") ||
+        target.closest("[role='button']") ||
+        target.closest(".cursor-pointer")
+      ) {
+
+        playHover();
+      }
+    };
+
+    const handleClick = () => {
+
+      playClick();
+    };
+
+    document.addEventListener("mouseover", handleHover);
+
+    document.addEventListener("click", handleClick);
+
+    return () => {
+
+      document.removeEventListener("mouseover", handleHover);
+
+      document.removeEventListener("click", handleClick);
+    };
+
+  }, []);
+
+  /* ---------------- AMBIENT MUSIC ---------------- */
+
+  useEffect(() => {
+
+    if (!ambientRef.current) return;
+
+    ambientRef.current.volume = 0.12;
+
+    if (musicOn) {
+
+      ambientRef.current.play().catch(() => {});
+
+    } else {
+
+      ambientRef.current.pause();
+    }
+
+  }, [musicOn]);
+
+  /* ---------------- LOADER ---------------- */
+
+  useEffect(() => {
+
     const timer = setTimeout(() => {
+
       setLoading(false);
+
     }, 2500);
 
     return () => clearTimeout(timer);
+
   }, []);
 
-  /* Sound Toggle */
-  const toggleSound = () => {
-    if (!audioRef.current) return;
+  /* ---------------- TOGGLE MUSIC ---------------- */
 
-    if (soundOn) {
-      audioRef.current.pause();
-      setSoundOn(false);
-    } else {
-      audioRef.current.volume = 0.3;
-      audioRef.current.play();
-      setSoundOn(true);
-    }
+  const toggleMusic = () => {
+
+    setMusicOn(!musicOn);
   };
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden">
-      
-      {/* Background Audio */}
+
+    <div className="min-h-screen bg-black text-white overflow-hidden relative">
+
+      {/* Ambient Audio */}
       <audio
-        ref={audioRef}
+        ref={ambientRef}
         loop
         src="/audio/ambient.mp3"
       />
@@ -58,19 +162,26 @@ export default function App() {
           style: {
             background: "#000",
             color: "#fff",
-            border: "1px solid #ff007f",
+            border: "1px solid rgba(255,255,255,0.08)",
           },
         }}
       />
 
       {/* Loader */}
       {loading ? (
+
         <Loader />
+
       ) : (
+
         <>
+
+          {/* Navbar */}
           <Navbar />
 
-          <main>
+          {/* Main Content */}
+          <main className="relative z-10">
+
             <Hero />
 
             <About />
@@ -84,41 +195,87 @@ export default function App() {
             <Services />
 
             <Contact />
+
           </main>
 
+          {/* Footer */}
           <Footer />
+
         </>
+
       )}
 
-      {/* Sound Button */}
+      {/* MUSIC TOGGLE BUTTON */}
       <button
-        onClick={toggleSound}
-        className="fixed bottom-6 left-6 z-50 bg-black/90 border border-white/10 hover:border-[#ff007f] text-white px-6 py-3 rounded-full tracking-[0.2em] text-xs uppercase transition-all duration-300 hover:scale-105"
+        onClick={toggleMusic}
+        className="
+          fixed
+          bottom-8
+          left-8
+          z-50
+          bg-black/80
+          backdrop-blur-xl
+          border
+          border-white/10
+          hover:border-[#ff007f]
+          text-white
+          px-7
+          py-4
+          rounded-full
+          tracking-[0.25em]
+          uppercase
+          text-xs
+          transition-all
+          duration-500
+          hover:scale-105
+          hover:bg-[#111]
+        "
       >
-        {soundOn ? "Sound On" : "Sound Off"}
+        {musicOn ? "SOUND ON" : "SOUND OFF"}
       </button>
 
-      {/* WhatsApp Floating Button */}
+      {/* LUXURY WHATSAPP BUTTON */}
       <a
         href="https://wa.me/919767094859?text=Hello%20Interior%20Solutions,%20I%20want%20to%20know%20more%20about%20your%20interior%20design%20services."
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50"
+        className="fixed bottom-8 right-8 z-50 group"
       >
-        <div className="bg-green-500 hover:bg-green-400 transition-all duration-300 rounded-full p-4 shadow-2xl hover:scale-110">
-          
+
+        <div
+          className="
+            w-16
+            h-16
+            rounded-full
+            bg-black/90
+            border
+            border-[#ff007f]
+            flex
+            items-center
+            justify-center
+            shadow-[0_0_35px_rgba(255,0,127,0.35)]
+            transition-all
+            duration-500
+            group-hover:scale-110
+            group-hover:bg-[#ff007f]
+            backdrop-blur-xl
+          "
+        >
+
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="34"
-            height="34"
+            width="30"
+            height="30"
             viewBox="0 0 24 24"
             fill="white"
           >
-            <path d="M20.52 3.48A11.78 11.78 0 0012.05 0C5.54 0 .25 5.29.25 11.8c0 2.08.54 4.11 1.57 5.91L0 24l6.49-1.7a11.75 11.75 0 005.56 1.41h.01c6.51 0 11.8-5.29 11.8-11.8 0-3.15-1.23-6.1-3.34-8.43zM12.06 21.3a9.4 9.4 0 01-4.79-1.31l-.34-.2-3.85 1.01 1.03-3.75-.22-.38a9.42 9.42 0 01-1.45-5.01c0-5.2 4.23-9.43 9.43-9.43a9.35 9.35 0 016.68 2.77 9.35 9.35 0 012.75 6.66c0 5.2-4.23 9.44-9.44 9.44zm5.17-7.05c-.28-.14-1.64-.81-1.9-.91-.25-.09-.43-.14-.61.14-.19.28-.71.91-.88 1.1-.16.19-.33.21-.61.07-.28-.14-1.18-.43-2.25-1.38-.83-.74-1.39-1.66-1.55-1.94-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.49.14-.17.19-.28.28-.47.09-.19.05-.35-.02-.49-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.45-.61-.46h-.52c-.19 0-.49.07-.74.35-.25.28-.97.95-.97 2.31 0 1.36.99 2.67 1.13 2.85.14.19 1.95 2.98 4.73 4.18.66.28 1.17.45 1.57.58.66.21 1.26.18 1.73.11.53-.08 1.64-.67 1.87-1.31.23-.64.23-1.19.16-1.31-.07-.12-.25-.19-.53-.33z"/>
+            <path d="M20.52 3.48A11.78 11.78 0 0012.04 0C5.5 0 .19 5.3.19 11.84c0 2.09.55 4.13 1.59 5.92L0 24l6.42-1.68a11.8 11.8 0 005.62 1.43h.01c6.54 0 11.84-5.31 11.84-11.84 0-3.16-1.23-6.13-3.37-8.43zm-8.48 18.2h-.01a9.9 9.9 0 01-5.04-1.38l-.36-.21-3.81 1 1.02-3.71-.23-.38a9.86 9.86 0 01-1.52-5.27c0-5.47 4.45-9.92 9.93-9.92 2.65 0 5.14 1.03 7.01 2.91a9.86 9.86 0 012.9 7.01c0 5.48-4.45 9.93-9.91 9.93zm5.44-7.41c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.66.15-.2.3-.76.97-.94 1.16-.17.2-.35.22-.65.08-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.8-1.68-2.1-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.66-.5h-.57c-.2 0-.52.08-.8.37-.27.3-1.05 1.03-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.1 3.2 5.1 4.48.7.3 1.25.48 1.67.61.7.22 1.33.19 1.83.12.56-.08 1.76-.72 2-1.41.25-.7.25-1.29.17-1.42-.08-.13-.27-.2-.57-.35z"/>
           </svg>
 
         </div>
+
       </a>
+
     </div>
   );
 }
