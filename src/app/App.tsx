@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
+import Awards from "./components/Awards";
 import { Portfolio } from "./components/Portfolio";
 import { Experience } from "./components/experience";
 import { Videos } from "./components/Videos";
@@ -16,18 +17,17 @@ export default function App() {
 
   const [loading, setLoading] = useState(true);
 
-  /* ONLY FOR AMBIENT MUSIC */
+  /* ONLY CONTROLS BACKGROUND MUSIC */
   const [musicOn, setMusicOn] = useState(true);
 
-  /* Ambient Music Ref */
+  /* AUDIO REFS */
   const ambientRef = useRef<HTMLAudioElement | null>(null);
 
-  /* UI SOUNDS */
   const hoverSoundRef = useRef<HTMLAudioElement | null>(null);
 
   const clickSoundRef = useRef<HTMLAudioElement | null>(null);
 
-  /* ---------------- INITIALIZE SOUNDS ---------------- */
+  /* ---------------- INITIALIZE UI SOUNDS ---------------- */
 
   useEffect(() => {
 
@@ -35,17 +35,18 @@ export default function App() {
 
     clickSoundRef.current = new Audio("/audio/soft click.mp3");
 
+    /* LOUDER UI SOUNDS */
     if (hoverSoundRef.current) {
-      hoverSoundRef.current.volume = 0.05;
+      hoverSoundRef.current.volume = 0.28;
     }
 
     if (clickSoundRef.current) {
-      clickSoundRef.current.volume = 0.12;
+      clickSoundRef.current.volume = 0.45;
     }
 
   }, []);
 
-  /* ---------------- HOVER SOUND ---------------- */
+  /* ---------------- PLAY HOVER ---------------- */
 
   const playHover = () => {
 
@@ -56,7 +57,7 @@ export default function App() {
     hoverSoundRef.current.play().catch(() => {});
   };
 
-  /* ---------------- CLICK SOUND ---------------- */
+  /* ---------------- PLAY CLICK ---------------- */
 
   const playClick = () => {
 
@@ -67,7 +68,7 @@ export default function App() {
     clickSoundRef.current.play().catch(() => {});
   };
 
-  /* ---------------- GLOBAL SITE SOUNDS ---------------- */
+  /* ---------------- GLOBAL SITE HOVER ---------------- */
 
   useEffect(() => {
 
@@ -100,6 +101,7 @@ export default function App() {
       document.removeEventListener("mouseover", handleHover);
 
       document.removeEventListener("click", handleClick);
+
     };
 
   }, []);
@@ -110,7 +112,8 @@ export default function App() {
 
     if (!ambientRef.current) return;
 
-    ambientRef.current.volume = 0.12;
+    /* LOUDER AMBIENT */
+    ambientRef.current.volume = 0.22;
 
     if (musicOn) {
 
@@ -148,7 +151,7 @@ export default function App() {
 
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
 
-      {/* Ambient Audio */}
+      {/* Ambient Music */}
       <audio
         ref={ambientRef}
         loop
@@ -179,12 +182,14 @@ export default function App() {
           {/* Navbar */}
           <Navbar />
 
-          {/* Main Content */}
+          {/* Main */}
           <main className="relative z-10">
 
             <Hero />
 
             <About />
+
+            <Awards />
 
             <Portfolio />
 
@@ -205,7 +210,7 @@ export default function App() {
 
       )}
 
-      {/* MUSIC TOGGLE BUTTON */}
+      {/* SOUND BUTTON */}
       <button
         onClick={toggleMusic}
         className="
@@ -213,7 +218,7 @@ export default function App() {
           bottom-8
           left-8
           z-50
-          bg-black/80
+          bg-black/90
           backdrop-blur-xl
           border
           border-white/10
@@ -234,7 +239,7 @@ export default function App() {
         {musicOn ? "SOUND ON" : "SOUND OFF"}
       </button>
 
-      {/* LUXURY WHATSAPP BUTTON */}
+      {/* PREMIUM WHATSAPP BUTTON */}
       <a
         href="https://wa.me/919767094859?text=Hello%20Interior%20Solutions,%20I%20want%20to%20know%20more%20about%20your%20interior%20design%20services."
         target="_blank"

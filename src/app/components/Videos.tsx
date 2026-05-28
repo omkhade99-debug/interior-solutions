@@ -105,7 +105,7 @@ export function Videos() {
             <div className="p-8">
 
               <p className="uppercase tracking-[0.2em] text-[var(--gold)] text-xs mb-4">
-                Bedroom Interior
+                Commercial Interior
               </p>
 
               <h3
@@ -145,7 +145,7 @@ export function Videos() {
             <div className="p-8">
 
               <p className="uppercase tracking-[0.2em] text-[var(--gold)] text-xs mb-4">
-                Commercial Interior
+                Residential Interior
               </p>
 
               <h3
@@ -154,7 +154,7 @@ export function Videos() {
                   fontFamily: "var(--font-serif)",
                 }}
               >
-                Premium Office Space
+                Premuim Residential Interior
               </h3>
 
             </div>

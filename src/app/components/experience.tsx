@@ -1,76 +1,83 @@
 import { motion } from "framer-motion";
 
 export function Experience() {
+
   return (
+
     <section
       id="experience"
       className="
+        py-28
+        px-5
+        md:px-[6%]
         bg-black
-        text-white
-        py-24
-        px-[6%]
-        overflow-hidden
         relative
+        overflow-hidden
       "
     >
 
-      {/* Ambient Glow */}
-      <div className="absolute inset-0 pointer-events-none">
-
-        <div className="
+      {/* Premium Glow */}
+      <div
+        className="
           absolute
-          top-[10%]
-          left-[15%]
-          w-[350px]
-          h-[350px]
+          top-1/2
+          left-1/2
+          -translate-x-1/2
+          -translate-y-1/2
+          w-[700px]
+          h-[700px]
           bg-pink-700/10
-          blur-[120px]
+          blur-[180px]
           rounded-full
-        " />
+        "
+      />
 
-        <div className="
-          absolute
-          bottom-[10%]
-          right-[10%]
-          w-[300px]
-          h-[300px]
-          bg-pink-600/10
-          blur-[120px]
-          rounded-full
-        " />
-
-      </div>
-
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="relative z-10 max-w-7xl mx-auto">
 
         {/* Heading */}
         <motion.div
-          initial={{ opacity: 0, y: 80 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-          className="mb-20 text-center"
+          initial={{
+            opacity: 0,
+            y: 80,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 1.2,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          viewport={{
+            once: false,
+            amount: 0.2,
+          }}
+          className="mb-24 text-center"
         >
 
-          <p className="
-            uppercase
-            tracking-[0.3em]
-            text-[var(--gold)]
-            text-sm
-            mb-4
-          ">
+          <p
+            className="
+              uppercase
+              tracking-[0.35em]
+              text-[var(--gold)]
+              text-sm
+              mb-6
+            "
+          >
             Experience
           </p>
 
           <h2
             className="
-              text-5xl
-              md:text-6xl
+              text-4xl
+              md:text-7xl
+              leading-[0.95]
               font-light
-              leading-tight
               text-white
             "
-            style={{ fontFamily: "var(--font-serif)" }}
+            style={{
+              fontFamily: "var(--font-serif)",
+            }}
           >
             Years of
             <span className="italic text-[var(--gold)]">
@@ -84,47 +91,72 @@ export function Experience() {
         </motion.div>
 
         {/* Stats Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div
+          className="
+            grid
+            grid-cols-1
+            md:grid-cols-2
+            lg:grid-cols-3
+            gap-8
+          "
+        >
 
           {/* Card 1 */}
           <motion.div
-            initial={{ opacity: 0, y: 80 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            initial={{
+              opacity: 0,
+              y: 100,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 1,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            viewport={{
+              once: false,
+              amount: 0.2,
+            }}
             whileHover={{
               y: -12,
-              scale: 1.02,
+              scale: 1.03,
             }}
             className="
               bg-black/60
-              backdrop-blur-xl
               border
-              border-white/10
-              rounded-[28px]
-              p-10
+              border-[rgba(255,255,255,0.06)]
+              rounded-[32px]
+              p-12
               text-center
+              backdrop-blur-xl
+              shadow-[0_0_50px_rgba(255,0,127,0.06)]
               transition-all
               duration-500
-              shadow-[0_0_50px_rgba(212,20,90,0.06)]
             "
           >
 
-            <h3 className="
-              text-6xl
-              text-[var(--gold)]
-              font-light
-              mb-4
-            ">
+            <h3
+              className="
+                text-6xl
+                md:text-7xl
+                text-[var(--gold)]
+                font-light
+                mb-6
+              "
+            >
               500+
             </h3>
 
-            <p className="
-              uppercase
-              tracking-[0.2em]
-              text-white/60
-              text-sm
-            ">
+            <p
+              className="
+                uppercase
+                tracking-[0.2em]
+                text-white/60
+                text-sm
+              "
+            >
               Luxury Projects
             </p>
 
@@ -132,43 +164,60 @@ export function Experience() {
 
           {/* Card 2 */}
           <motion.div
-            initial={{ opacity: 0, y: 80 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
+            initial={{
+              opacity: 0,
+              y: 100,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 1.1,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            viewport={{
+              once: false,
+              amount: 0.2,
+            }}
             whileHover={{
               y: -12,
-              scale: 1.02,
+              scale: 1.03,
             }}
             className="
               bg-black/60
-              backdrop-blur-xl
               border
-              border-white/10
-              rounded-[28px]
-              p-10
+              border-[rgba(255,255,255,0.06)]
+              rounded-[32px]
+              p-12
               text-center
+              backdrop-blur-xl
+              shadow-[0_0_50px_rgba(255,0,127,0.06)]
               transition-all
               duration-500
-              shadow-[0_0_50px_rgba(212,20,90,0.06)]
             "
           >
 
-            <h3 className="
-              text-6xl
-              text-[var(--gold)]
-              font-light
-              mb-4
-            ">
+            <h3
+              className="
+                text-6xl
+                md:text-7xl
+                text-[var(--gold)]
+                font-light
+                mb-6
+              "
+            >
               20+
             </h3>
 
-            <p className="
-              uppercase
-              tracking-[0.2em]
-              text-white/60
-              text-sm
-            ">
+            <p
+              className="
+                uppercase
+                tracking-[0.2em]
+                text-white/60
+                text-sm
+              "
+            >
               Years Experience
             </p>
 
@@ -176,43 +225,60 @@ export function Experience() {
 
           {/* Card 3 */}
           <motion.div
-            initial={{ opacity: 0, y: 80 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2 }}
-            viewport={{ once: true }}
+            initial={{
+              opacity: 0,
+              y: 100,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 1.2,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            viewport={{
+              once: false,
+              amount: 0.2,
+            }}
             whileHover={{
               y: -12,
-              scale: 1.02,
+              scale: 1.03,
             }}
             className="
               bg-black/60
-              backdrop-blur-xl
               border
-              border-white/10
-              rounded-[28px]
-              p-10
+              border-[rgba(255,255,255,0.06)]
+              rounded-[32px]
+              p-12
               text-center
+              backdrop-blur-xl
+              shadow-[0_0_50px_rgba(255,0,127,0.06)]
               transition-all
               duration-500
-              shadow-[0_0_50px_rgba(212,20,90,0.06)]
             "
           >
 
-            <h3 className="
-              text-6xl
-              text-[var(--gold)]
-              font-light
-              mb-4
-            ">
+            <h3
+              className="
+                text-6xl
+                md:text-7xl
+                text-[var(--gold)]
+                font-light
+                mb-6
+              "
+            >
               25+
             </h3>
 
-            <p className="
-              uppercase
-              tracking-[0.2em]
-              text-white/60
-              text-sm
-            ">
+            <p
+              className="
+                uppercase
+                tracking-[0.2em]
+                text-white/60
+                text-sm
+              "
+            >
               Design Awards
             </p>
 
@@ -222,31 +288,49 @@ export function Experience() {
 
         {/* Bottom Text */}
         <motion.div
-          initial={{ opacity: 0, y: 80 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.4 }}
-          viewport={{ once: true }}
+          initial={{
+            opacity: 0,
+            y: 80,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 1.3,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          viewport={{
+            once: false,
+            amount: 0.2,
+          }}
           className="
-            mt-20
+            mt-24
             text-center
-            max-w-3xl
+            max-w-4xl
             mx-auto
           "
         >
 
-          <p className="
-            text-white/65
-            text-lg
-            leading-relaxed
-          ">
+          <p
+            className="
+              text-white/65
+              text-lg
+              md:text-xl
+              leading-relaxed
+            "
+          >
             We believe exceptional interiors are more
-            than aesthetics — they are experiences that
-            inspire, comfort, and elevate everyday life.
+            than aesthetics — they are experiences
+            designed to inspire, comfort, and elevate
+            everyday living through timeless luxury and
+            intelligent spatial design.
           </p>
 
         </motion.div>
 
       </div>
+
     </section>
   );
 }

@@ -1,79 +1,372 @@
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
-const navLinks = [
-  { href: '#work', label: 'Work' },
-  { href: '#about', label: 'About' },
-  { href: '#videos', label: 'Videos' },
-  { href: '#services', label: 'Services' },
-  { href: '#contact', label: 'Contact' },
+import { LogoMark } from "./LogoMark";
+
+const navItems = [
+  {
+    label: "About",
+    href: "#about",
+  },
+  {
+    label: "Work",
+    href: "#work",
+  },
+  {
+    label: "Experience",
+    href: "#experience",
+  },
+  {
+    label: "Contact",
+    href: "#contact",
+  },
 ];
 
 export function Navbar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const [mobileMenu, setMobileMenu] = useState(false);
+
+  const [scrolled, setScrolled] = useState(false);
+
+  /* Scroll Blur */
+  useEffect(() => {
+
+    const handleScroll = () => {
+
+      if (window.scrollY > 40) {
+
+        setScrolled(true);
+
+      } else {
+
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 px-[4%] py-5 flex justify-between items-center bg-[rgba(17,16,16,0.92)] backdrop-blur-xl border-b border-[var(--border-gold)]">
-      <a
-        href="#hero"
-        className="text-xl font-semibold tracking-wide text-[var(--gold)] no-underline"
-        style={{ fontFamily: 'var(--font-serif)' }}
-      >
-        Interior <span className="text-[var(--text)]">Solution's</span>
-      </a>
 
-      {/* Desktop Navigation */}
-      <ul className="hidden md:flex gap-10 list-none">
-        {navLinks.map((link) => (
-          <li key={link.href}>
-            <a
-              href={link.href}
-              className="no-underline text-[0.82rem] tracking-[0.12em] uppercase text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--gold)]"
+    <motion.header
+      initial={{
+        opacity: 0,
+        y: -80,
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+      }}
+      transition={{
+        duration: 1,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className={`
+        fixed
+        top-0
+        left-0
+        w-full
+        z-[999]
+        transition-all
+        duration-500
+        ${
+          scrolled
+            ? "bg-black/70 backdrop-blur-2xl border-b border-white/5"
+            : "bg-transparent"
+        }
+      `}
+    >
+
+      <div
+        className="
+          max-w-7xl
+          mx-auto
+          px-5
+          md:px-[6%]
+          py-5
+          flex
+          items-center
+          justify-between
+        "
+      >
+
+        {/* Logo */}
+        <motion.a
+          href="#"
+          whileHover={{
+            scale: 1.03,
+          }}
+          className="
+            flex
+            items-center
+            gap-4
+          "
+        >
+
+          <LogoMark />
+
+          <div>
+
+            <h1
+              className="
+                text-xl
+                md:text-2xl
+                text-white
+                font-light
+                leading-none
+              "
+              style={{
+                fontFamily: "var(--font-serif)",
+              }}
             >
-              {link.label}
-            </a>
-          </li>
-        ))}
-      </ul>
+              Interior
+              <span className="italic text-[var(--gold)]">
+                {" "}
+                Solutions
+              </span>
+            </h1>
 
-      <a
-        href="#contact"
-        className="hidden md:inline-block px-6 py-2 border border-[var(--gold)] text-[var(--gold)] text-[0.78rem] tracking-[0.1em] uppercase no-underline transition-all duration-250 hover:bg-[var(--gold)] hover:text-[var(--dark)]"
-      >
-        Get a Quote
-      </a>
+            <p
+              className="
+                text-white/40
+                text-[10px]
+                uppercase
+                tracking-[0.25em]
+                mt-1
+              "
+            >
+              Luxury Interior Studio
+            </p>
 
-      {/* Mobile Menu Button */}
-      <button
-        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        className="md:hidden text-[var(--gold)] bg-transparent border-none text-2xl cursor-pointer p-2"
-        aria-label="Toggle menu"
-      >
-        {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-      </button>
+          </div>
+
+        </motion.a>
+
+        {/* Desktop Nav */}
+        <nav
+          className="
+            hidden
+            lg:flex
+            items-center
+            gap-10
+          "
+        >
+
+          {navItems.map((item, index) => (
+
+            <motion.a
+              key={index}
+              href={item.href}
+              whileHover={{
+                y: -2,
+              }}
+              className="
+                relative
+                text-sm
+                uppercase
+                tracking-[0.25em]
+                text-white/70
+                hover:text-white
+                transition-all
+                duration-300
+                group
+              "
+            >
+
+              {item.label}
+
+              {/* Hover Line */}
+              <span
+                className="
+                  absolute
+                  left-0
+                  -bottom-2
+                  w-0
+                  h-[1px]
+                  bg-[#ff007f]
+                  transition-all
+                  duration-500
+                  group-hover:w-full
+                "
+              />
+
+            </motion.a>
+
+          ))}
+
+        </nav>
+
+        {/* CTA */}
+        <motion.a
+          href="#contact"
+          whileHover={{
+            scale: 1.05,
+          }}
+          whileTap={{
+            scale: 0.97,
+          }}
+          className="
+            hidden
+            lg:flex
+            items-center
+            justify-center
+            px-7
+            py-4
+            rounded-full
+            bg-[#ff007f]
+            hover:bg-[#ff3399]
+            text-white
+            uppercase
+            tracking-[0.25em]
+            text-xs
+            transition-all
+            duration-500
+            shadow-[0_0_35px_rgba(255,0,127,0.35)]
+          "
+        >
+          Get Quote
+        </motion.a>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setMobileMenu(!mobileMenu)}
+          className="
+            lg:hidden
+            text-white
+            z-[1001]
+            relative
+          "
+        >
+
+          {mobileMenu ? (
+
+            <X size={30} />
+
+          ) : (
+
+            <Menu size={30} />
+
+          )}
+
+        </button>
+
+      </div>
 
       {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="absolute top-full left-0 right-0 bg-[var(--dark2)] md:hidden flex flex-col gap-6 p-8 border-b border-[var(--border-gold)]">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className="no-underline text-[0.82rem] tracking-[0.12em] uppercase text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--gold)]"
-            >
-              {link.label}
-            </a>
-          ))}
-          <a
-            href="#contact"
-            onClick={() => setMobileMenuOpen(false)}
-            className="inline-block px-6 py-2 border border-[var(--gold)] text-[var(--gold)] text-[0.78rem] tracking-[0.1em] uppercase no-underline text-center transition-all duration-250 hover:bg-[var(--gold)] hover:text-[var(--dark)]"
+      <motion.div
+        initial={false}
+        animate={{
+          opacity: mobileMenu ? 1 : 0,
+          pointerEvents: mobileMenu ? "auto" : "none",
+        }}
+        transition={{
+          duration: 0.4,
+        }}
+        className="
+          fixed
+          inset-0
+          bg-black/95
+          backdrop-blur-2xl
+          flex
+          flex-col
+          items-center
+          justify-center
+          gap-10
+          lg:hidden
+        "
+      >
+
+        {/* Pink Glow */}
+        <div
+          className="
+            absolute
+            w-[500px]
+            h-[500px]
+            bg-pink-700/10
+            blur-[160px]
+            rounded-full
+          "
+        />
+
+        {navItems.map((item, index) => (
+
+          <motion.a
+            key={index}
+            href={item.href}
+            initial={{
+              opacity: 0,
+              y: 40,
+            }}
+            animate={{
+              opacity: mobileMenu ? 1 : 0,
+              y: mobileMenu ? 0 : 40,
+            }}
+            transition={{
+              delay: index * 0.08,
+              duration: 0.5,
+            }}
+            onClick={() => setMobileMenu(false)}
+            className="
+              relative
+              text-3xl
+              text-white
+              uppercase
+              tracking-[0.2em]
+              font-light
+              hover:text-[#ff007f]
+              transition-all
+              duration-300
+            "
+            style={{
+              fontFamily: "var(--font-serif)",
+            }}
           >
-            Get a Quote
-          </a>
-        </div>
-      )}
-    </nav>
+            {item.label}
+          </motion.a>
+
+        ))}
+
+        {/* Mobile CTA */}
+        <motion.a
+          href="#contact"
+          initial={{
+            opacity: 0,
+            y: 40,
+          }}
+          animate={{
+            opacity: mobileMenu ? 1 : 0,
+            y: mobileMenu ? 0 : 40,
+          }}
+          transition={{
+            delay: 0.4,
+            duration: 0.5,
+          }}
+          onClick={() => setMobileMenu(false)}
+          className="
+            mt-6
+            px-10
+            py-5
+            rounded-full
+            bg-[#ff007f]
+            hover:bg-[#ff3399]
+            text-white
+            uppercase
+            tracking-[0.25em]
+            text-xs
+            transition-all
+            duration-500
+            shadow-[0_0_40px_rgba(255,0,127,0.35)]
+          "
+        >
+          Get Quote
+        </motion.a>
+
+      </motion.div>
+
+    </motion.header>
   );
 }

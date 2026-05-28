@@ -241,7 +241,7 @@ export function Hero() {
               </h2>
 
               <p className="uppercase tracking-[0.25em] text-[var(--gold)] text-sm">
-                Luxury Interior Studio
+                 Interior Designing Studio
               </p>
 
             </div>

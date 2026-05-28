@@ -10,7 +10,7 @@ export function Footer() {
         Interior Solution's
       </div>
       <p className="text-[0.78rem] text-[var(--text-muted)]">
-        © {currentYear} Interior Solution's · Nagpur & Chandrapur, Maharashtra
+        © {currentYear} Interior Solution's · Nagpur & Chandrapur, Maharashtra, India
       </p>
       <p className="text-[0.78rem] text-[var(--text-muted)]">
          interiorsolutions1125@gmail.com

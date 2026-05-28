@@ -33,7 +33,7 @@ const projects: Project[] = [
       "/portfolio/living dining/living room final1.jpg",
       "/portfolio/living dining/living room final2.jpg",
       "/portfolio/living dining/living room final3.jpg",
-     "/portfolio/living dining/livingroom final5.jpeg",
+      "/portfolio/living dining/livingroom final5.jpeg",
       "/portfolio/living dining/livingroom final6.jpeg",
       "/portfolio/living dining/livingroom final7.jpeg",
     ],
@@ -67,7 +67,22 @@ const projects: Project[] = [
     ],
   },
 
-  
+  {
+    id: 4,
+    category: "commercial",
+    categoryLabel: "Commercial · Office Interior",
+    name: "Executive Workspace Design",
+
+    images: [
+      "/portfolio/office/office final1.jpg",
+      "/portfolio/office/office final2.jpg",
+      "/portfolio/office/office final3.jpg",
+      "/portfolio/office/office final4.jpg",
+      "/portfolio/office/office final5.jpg",
+      "/portfolio/office/office final6.jpg",
+      "/portfolio/office/office final7.jpg",
+    ],
+  },
 
 ];
 
@@ -79,7 +94,7 @@ export function Portfolio() {
     >
 
       {/* Background Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(212,20,90,0.08),transparent_35%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,0,127,0.08),transparent_35%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
 
@@ -88,22 +103,26 @@ export function Portfolio() {
           initial={{ opacity: 0, y: 80 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           className="text-center mb-24"
         >
 
-          <p className="uppercase tracking-[0.35em] text-[var(--gold)] text-sm mb-6">
+          <p className="uppercase tracking-[0.35em] text-[#ff007f] text-sm mb-6">
             Portfolio
           </p>
 
           <h2
-            className="text-6xl md:text-7xl leading-[0.95] font-light text-white"
-            style={{
-              fontFamily: "var(--font-serif)",
-            }}
+            className="
+              text-5xl
+              md:text-7xl
+              leading-[0.95]
+              font-semibold
+              text-white
+              tracking-tight
+            "
           >
             Crafted
-            <span className="italic text-[var(--gold)]">
+            <span className="italic text-[#ff007f]">
               {" "}
               Luxury
             </span>
@@ -126,15 +145,17 @@ export function Portfolio() {
                 duration: 1,
                 delay: index * 0.15,
               }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               className="
                 bg-[#050505]
                 border
                 border-[rgba(255,255,255,0.06)]
                 rounded-[32px]
                 overflow-hidden
-                premium-glow
-                hover-lift
+                hover:border-[#ff007f]
+                transition-all
+                duration-500
+                hover:shadow-[0_0_40px_rgba(255,0,127,0.15)]
               "
             >
 
@@ -192,15 +213,17 @@ export function Portfolio() {
               {/* Content */}
               <div className="p-8">
 
-                <p className="uppercase tracking-[0.2em] text-[var(--gold)] text-xs mb-4">
+                <p className="uppercase tracking-[0.2em] text-[#ff007f] text-xs mb-4">
                   {project.categoryLabel}
                 </p>
 
                 <h3
-                  className="text-3xl text-white leading-tight"
-                  style={{
-                    fontFamily: "var(--font-serif)",
-                  }}
+                  className="
+                    text-3xl
+                    text-white
+                    leading-tight
+                    font-semibold
+                  "
                 >
                   {project.name}
                 </h3>
