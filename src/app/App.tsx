@@ -1,3 +1,4 @@
+import Lenis from "lenis";
 import { Toaster } from "sonner";
 import { useEffect, useRef, useState } from "react";
 
@@ -19,6 +20,25 @@ export default function App() {
 
   /* ONLY CONTROLS BACKGROUND MUSIC */
   const [musicOn, setMusicOn] = useState(true);
+  /* LENIS SMOOTH SCROLL */
+useEffect(() => {
+  const lenis = new Lenis({
+    duration: 2,
+    smoothWheel: true,
+  });
+
+  function raf(time: number) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+
+  return () => {
+    lenis.destroy();
+  };
+}, []);
+
 
   /* AUDIO REFS */
   const ambientRef = useRef<HTMLAudioElement | null>(null);

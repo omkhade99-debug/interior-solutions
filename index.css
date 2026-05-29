@@ -1,64 +1,181 @@
-const services = [
-  {
-    num: '01',
-    title: 'Residential Design',
-    description:
-      'Complete home interiors — living rooms, bedrooms, kitchens, bathrooms — designed around how you actually live.',
-  },
-  {
-    num: '02',
-    title: 'Commercial Interiors',
-    description:
-      'Offices, showrooms, and hospitality spaces that blend function with a strong brand identity.',
-  },
-  {
-    num: '03',
-    title: 'Space Planning',
-    description:
-      'Smart layouts that maximize flow, natural light, and usability — before construction begins.',
-  },
-  {
-    num: '04',
-    title: '3D Design & Visualization',
-    description:
-      'Photorealistic renders of your space so you can approve every detail before execution.',
-  },
-];
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-export function Services() {
-  return (
-    <section id="services" className="bg-[var(--dark)] px-[4%] py-24">
-      <div>
-        <p className="flex items-center gap-4 text-[0.72rem] tracking-[0.25em] uppercase text-[var(--gold)] mb-4 after:content-[''] after:flex-1 after:h-[1px] after:bg-[var(--border-gold)] after:max-w-[80px]">
-          What We Do
-        </p>
-        <h2>
-          Our <em className="italic text-[var(--gold)]">Services</em>
-        </h2>
-      </div>
+/* =========================
+   ROOT VARIABLES
+========================= */
 
-      {/* Services Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[1px] bg-[var(--border-gold)] border border-[var(--border-gold)] mt-12">
-        {services.map((service) => (
-          <div
-            key={service.num}
-            className="bg-[var(--dark)] p-10 transition-colors duration-250 hover:bg-[var(--dark2)]"
-          >
-            <div
-              className="text-[2.5rem] font-light text-[rgba(200,24,90,0.3)] leading-none mb-6"
-              style={{ fontFamily: 'var(--font-serif)' }}
-            >
-              {service.num}
-            </div>
-            <h3 className="text-base font-medium text-[var(--text)] mb-3 tracking-wide">
-              {service.title}
-            </h3>
-            <p className="text-[0.82rem] text-[var(--text-muted)] leading-relaxed">
-              {service.description}
-            </p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
+:root {
+  --dark: #050505;
+  --dark2: #0f0f0f;
+  --gold: #ff2f86;
+  --border-gold: rgba(255, 47, 134, 0.25);
+
+  --text: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.7);
+
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+/* =========================
+   RESET
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--dark);
+  color: var(--text);
+  font-family: var(--font-sans);
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-serif);
+  color: var(--text);
+}
+
+p {
+  line-height: 1.8;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+/* =========================
+   IMAGES
+========================= */
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* =========================
+   LOGO GLOW
+========================= */
+
+.logo-glow {
+  filter:
+    drop-shadow(0 0 10px rgba(255, 47, 134, 0.7))
+    drop-shadow(0 0 20px rgba(255, 47, 134, 0.5))
+    drop-shadow(0 0 40px rgba(255, 47, 134, 0.3));
+}
+
+/* =========================
+   HOVER EFFECTS
+========================= */
+
+.hover-glow:hover {
+  color: var(--gold);
+  transition: 0.3s ease;
+  text-shadow:
+    0 0 8px rgba(255, 47, 134, 0.6),
+    0 0 16px rgba(255, 47, 134, 0.4);
+}
+
+/* =========================
+   REVEAL ANIMATION
+========================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(60px);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff2f86;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff5aa3;
+}
+
+/* =========================
+   TEXT SELECTION
+========================= */
+
+::selection {
+  background: #ff2f86;
+  color: white;
+}
+
+/* =========================
+   WHATSAPP BUTTON GLOW
+========================= */
+
+.whatsapp-glow {
+  box-shadow:
+    0 0 15px rgba(255, 47, 134, 0.4),
+    0 0 35px rgba(255, 47, 134, 0.2);
+}
+
+/* =========================
+   MOBILE FIXES
+========================= */
+
+@media (max-width: 768px) {
+  h1 {
+    line-height: 1;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
 }
